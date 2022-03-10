@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/solidity-gray?style=for-the-badge&logo=solidity)
 
 <div align="center">
-	<img src="https://user-images.githubusercontent.com/60258527/157661452-39133fd7-7a88-4705-83b6-e3a33521b5d5.png" alt="logo" width="300">
+	<img src="https://user-images.githubusercontent.com/60258527/157661452-39133fd7-7a88-4705-83b6-e3a33521b5d5.png" alt="logo" width="500">
 	<h3>Triple Donate</h3>
 	<br>
 	<p>Triple Donate는 말그대로 decentralization, data, donate</p>

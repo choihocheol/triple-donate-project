@@ -32,28 +32,28 @@
 			<td>이민기</td>
 			<td>Front-End</td>
 			<td>
-				<a href="https://github.com/mingi3442" target="_blank">Link</a>
+				<a href="https://github.com/mingi3442">Link</a>
 			</td>
 		</tr>
 		<tr>
 			<td>신동주</td>
 			<td>Front-End</td>
 			<td>
-				<a href="https://github.com/djshinnn" target="_blank">Link</a>
+				<a href="https://github.com/djshinnn">Link</a>
 			</td>
 		</tr>
 		<tr>
 			<td>김신학</td>
 			<td>Back-End</td>
 			<td>
-				<a href="https://github.com/Colvet" target="_blank">Link</a>
+				<a href="https://github.com/Colvet">Link</a>
 			</td>
 		</tr>
 		<tr>
 			<td>최호철</td>
 			<td>Blockchain</td>
 			<td>
-				<a href="https://github.com/choihocheol" target="_blank">Link</a>
+				<a href="https://github.com/choihocheol">Link</a>
 			</td>
 		</tr>
 	</tbody>

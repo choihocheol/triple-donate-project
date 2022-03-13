@@ -13,7 +13,7 @@
 	<p>각각의 의미를 순서대로 가지는 탈중앙화 데이터 기부 플랫폼입니다.</p>
 </div>
 
-## Prerequisite
+## Prerequisites
 
 ## Quick Start
 

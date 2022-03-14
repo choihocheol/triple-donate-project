@@ -1,6 +1,7 @@
 ![](https://img.shields.io/badge/javascript-gray?style=for-the-badge&logo=javascript)
 ![](https://img.shields.io/badge/react-gray?style=for-the-badge&logo=react)
 ![](https://img.shields.io/badge/mui-gray?style=for-the-badge&logo=mui)
+![](https://img.shields.io/badge/💅%20styled_components-gray?style=for-the-badge)
 ![](https://img.shields.io/badge/express-gray?style=for-the-badge&logo=express)
 ![](https://img.shields.io/badge/mongodb-gray?style=for-the-badge&logo=mongodb)
 ![](https://img.shields.io/badge/solidity-gray?style=for-the-badge&logo=solidity)

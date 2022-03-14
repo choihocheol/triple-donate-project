@@ -1,0 +1,62 @@
+.board__view {
+  width: 100%;
+  border-top: 2px solid #000;
+}
+
+.board__view--title {
+  padding: 20px 15px;
+  border-bottom: 1px dashed #ddd;
+  font-size: 1.6rem;
+}
+
+.board__view--info {
+  padding: 15px;
+  border-bottom: 1px solid #999;
+  font-size: 0;
+}
+
+.board__view--info dl {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.board__view--info dl:first-child {
+  padding-left: 0;
+}
+
+.board__view--info dl dt,
+.board__view--info dl dd {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.board__view--info dl::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 0;
+  display: block;
+  width: 1px;
+  height: 23px;
+  background: #ddd;
+}
+
+.board__view--info dl:first-child::before {
+  display: none;
+}
+
+.board__view--info dl dt {
+}
+
+.board__view--info dl dd {
+  margin-left: 10px;
+  color: #777;
+}
+
+.board__view--cont {
+  padding: 15px;
+  border-bottom: 1px solid #000;
+  line-height: 160%;
+  font-size: 1rem;
+}

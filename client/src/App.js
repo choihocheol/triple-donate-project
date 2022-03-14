@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/" exact>
-          Home
+          <Home />
         </Route>
         <Route path="/home" exact>
           Home

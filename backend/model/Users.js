@@ -10,13 +10,20 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    balacne:{
+        type: Number
+    },
     walletAddr: {
         type: String
     },
     privateKey: {
         type: String
+    },
+    nftList: {
+        type: Array
     }
-        
+    
 });
+
 
 module.exports = mongoose.model('Users', UserSchema);

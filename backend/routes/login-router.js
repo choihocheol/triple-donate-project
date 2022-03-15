@@ -8,8 +8,10 @@ router.post("/login", UserController.login);
 // signup
 router.post("/singup", UserController.signup);
 
-// get User Data
-// router.get("/fetch/:seq", UserController.getUserData);
+// get Mylist Data
+router.post("/mylist", UserController.getMyData);
 
+// logout
+// router.post("logout", UserController.logout);
 
 module.exports = router;

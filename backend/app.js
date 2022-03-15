@@ -3,6 +3,8 @@ const cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
+
 
 const app = express();
 
@@ -24,13 +26,16 @@ mongoose
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.unsubscribe(bodyParser.json());
 
 // Router 설정
 const loginRouter = require("./routes/login-router");
+const postRouter = require("./routes/post-router");
 
 app.use("/user", loginRouter);
+app.use("/post", postRouter);
 
 module.exports = app.listen(PORT, () => {
   console.log(`Server is starting on ${PORT}`);

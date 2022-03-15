@@ -42,23 +42,34 @@ exports.signup = async (req, res) => {
 };
 
 // getUserData By username?seq?
-exports.getUserData = async (req, res) => {
+exports.getMyData = async (req, res) => {
     try{
         // body? session? seq 로 바꾸기
-        const user = await UserModel.findOne({userName: req.params.seq});
+        const user = await UserModel.findOne({userName: req.params.username});
         
         if(!user){
-            return res.status(400).json({msg: "Invalid User"})
+            return res.status(404).json({msg: "Session is expired"})
         }else{
-            const userData = {
-                walletAddr: user.walletAddr
+            const {userData, data} = {
+                walletAddr: user.walletAddr,
+                data: "Data"
             }
             return res.status(201).json({data: userData})
         }
 
     }
     catch(err){
-        return res.status(400).josn({msg: {err}})
+        
+        return res.status(400).json({msg: {err}})
     }
-}
+};
+
+exports.logout = async (req, res) => {
+    try{
+
+
+    }catch(err){
+
+    }
+};
 

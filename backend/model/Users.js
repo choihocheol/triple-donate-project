@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-auto-increment');
 
 // User mmodel
 const UserSchema = new mongoose.Schema({
@@ -17,8 +16,7 @@ const UserSchema = new mongoose.Schema({
     privateKey: {
         type: String
     }
-    
+        
 });
 
-UserSchema.plugin(autoIncrement.plugin, {model: 'Users', field: '_id', startAt: 1})
 module.exports = mongoose.model('Users', UserSchema);

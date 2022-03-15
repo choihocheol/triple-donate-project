@@ -30,7 +30,7 @@ app.unsubscribe(bodyParser.json());
 // Router 설정
 const loginRouter = require("./routes/login-router");
 
-app.use("/login", loginRouter);
+app.use("/user", loginRouter);
 
 module.exports = app.listen(PORT, () => {
   console.log(`Server is starting on ${PORT}`);

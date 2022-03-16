@@ -47,7 +47,7 @@ export default function IndexFourth() {
     <Box component="section" sx={{ display: "flex", bgcolor: "whitesmoke", overflow: "hidden" }}>
       <Container
         sx={{
-          mt: 10,
+          mt: 15,
           mb: 15,
           position: "relative",
           display: "flex",
@@ -55,34 +55,34 @@ export default function IndexFourth() {
           alignItems: "center",
         }}
       >
-        <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14 }}>
+        <Typography variant="h4" marked="center" component="h2" sx={{ mb: 14, fontWeight: 600, fontSize: "38px" }}>
           데이터 수집 단계
         </Typography>
 
         <Grid container spacing={5}>
           <Grid item xs={12} md={4}>
             <Box data-aos="fade-up" sx={item}>
-              <Box sx={number}>1.</Box>
+              <Box sx={number}>1</Box>
               <Box component="img" src="http://temp20.zsol.co.kr/icon_img/document12.svg" alt="document" sx={image} />
-              <Typography variant="h5" align="center">
+              <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
                 필요한 프로젝트 제안
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={12} md={4}>
             <Box data-aos="fade-up" sx={item}>
-              <Box sx={number}>2.</Box>
+              <Box sx={number}>2</Box>
               <Box component="img" src="http://temp20.zsol.co.kr/icon_img/transform.svg" alt="transform" sx={image} />
-              <Typography variant="h5" align="center">
+              <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
                 자신의 데이터를 이용해 프로젝트에 기여
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={12} md={4}>
             <Box data-aos="fade-up" sx={item}>
-              <Box sx={number}>3.</Box>
+              <Box sx={number}>3</Box>
               <Box component="img" src="http://temp20.zsol.co.kr/icon_img/handshake09.svg" alt="handshake" sx={image} />
-              <Typography variant="h5" align="center">
+              <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
                 {"기여한 프로젝트에 따른 증명서와 토큰 발급 "}
               </Typography>
             </Box>

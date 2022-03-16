@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
-
 const app = express();
 
 // DB 연결
@@ -16,13 +15,13 @@ mongoose
   .catch((e) => console.error(e));
 
 // client
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//     methods: ["GET", "POST", "OPTIONS"],
-//   })
-// );
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+  })
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,4 +38,8 @@ app.use("/post", postRouter);
 
 module.exports = app.listen(PORT, () => {
   console.log(`Server is starting on ${PORT}`);
+});
+
+app.get("/", (req, res) => {
+  res.send("??");
 });

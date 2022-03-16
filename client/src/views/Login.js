@@ -8,6 +8,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
 
 const theme = createTheme();
 
@@ -16,8 +17,22 @@ export default function Login() {
   const [userPw, setUserPw] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUserId("");
-    setUserPw("");
+    axios
+      .post("http://localhost:4999/user/login", {
+        userName: userId,
+        password: userPw,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log("OK");
+        setUserId("");
+        setUserPw("");
+      })
+      .catch((err) => {
+        if (err) {
+          console.log("에러", err);
+        }
+      });
   };
 
   return (
@@ -35,9 +50,9 @@ export default function Login() {
           <Avatar sx={{ width: 400, height: 125 }} alt="logo" src="logo.png" />
           <br />
           <Typography component="h1" variant="h5">
-            Login
+            로그인
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -65,23 +80,18 @@ export default function Login() {
               }}
             />
 
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-              Log In
+            <Button type="submit" onClick={handleSubmit} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+              로그인
             </Button>
 
-            <Link href="#" variant="body2">
+            <Link href="/signup" variant="body2">
               <Button fullWidth variant="outlined">
-                Sign Up
+                회원 가입
               </Button>
             </Link>
           </Box>
         </Box>
         <Box sx={{ height: 200 }} />
-        <Typography variant="body2" color="text.secondary" align="center">
-          {"Copyright © "}
-          Triple - Donate {new Date().getFullYear()}
-          {"."}
-        </Typography>
       </Container>
     </ThemeProvider>
   );

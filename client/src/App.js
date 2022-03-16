@@ -6,6 +6,8 @@ import Post from "./views/Post";
 import Login from "./views/Login";
 import View from "./components/View";
 import Home from "./pages/Home";
+import Signup from "./views/Signup";
+import Nft from "./components/Nft";
 
 function App() {
   return (
@@ -26,8 +28,14 @@ function App() {
         </Route>
         <Route path="/profile">Profile</Route>
         <Route path="/create">Create</Route>
-        <Route path="/signin">
+        <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/nft">
+          <Nft />
         </Route>
       </Switch>
       <Footer />

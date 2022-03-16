@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { Avatar, Button } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
 
 const Container = styled.div`
   width: 100%;
-  height: 800px;
+  height: 850px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,13 +53,22 @@ const LogoContent = styled.div`
 const ContentContainer = styled.div`
   width: 75%;
 `;
-const MainContentFont = styled.span`
-  font-size: 50px;
+const MainContentFont = styled.div`
+  font-size: 48px;
   font-weight: 600;
+  margin-bottom: 10px;
+`;
+const ContentFont = styled.div`
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 5px;
 `;
 
 export default function IndexFirst() {
   useEffect(() => {
+    axios.get("http://localhost:4999/").then((res) => {
+      console.log(res);
+    });
     AOS.init({
       disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
       startEvent: "DOMContentLoaded", // name of the event dispatched on the document, that AOS should initialize on
@@ -79,8 +89,9 @@ export default function IndexFirst() {
       <MainContainer>
         <LeftContainer>
           <ContentContainer>
-            <MainContentFont>당신의 데이터를 의미있는곳에 사용하세요!</MainContentFont>
-            <p>많은 의미있는 프로젝트에서 당신의 소중한 데이터를 필요로 합니다</p>
+            <MainContentFont>당신의 데이터를 의미있는 프로젝트에 사용하세요!</MainContentFont>
+            <ContentFont>많은 의미있는 프로젝트에서</ContentFont>
+            <ContentFont>당신의 소중한 데이터를 필요로 합니다</ContentFont>
           </ContentContainer>
           <BtnContainer>
             <Button size="large" variant="contained">
@@ -96,6 +107,8 @@ export default function IndexFirst() {
             <Avatar sx={{ width: "100%", height: "100%" }} alt="logo" src="logo.png" />
           </LogoContent>
         </RightContainer>
+        <div class="arrow arrow-first"></div>
+        <div class="arrow arrow-second"></div>
       </MainContainer>
     </Container>
   );

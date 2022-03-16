@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
 
 const theme = createTheme();
 
@@ -18,9 +19,23 @@ export default function Signup() {
   const [userPw, setUserPw] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    setUsername("");
-    setUserId("");
-    setUserPw("");
+    axios
+      .post("http://localhost:4999/user/singup", {
+        userName: userId,
+        password: userPw,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log("OK");
+        setUsername("");
+        setUserId("");
+        setUserPw("");
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
   };
 
   return (
@@ -38,7 +53,7 @@ export default function Signup() {
           <Avatar sx={{ width: 400, height: 125 }} alt="logo" src="logo.png" />
           <br />
           <Typography component="h1" variant="h5">
-            Sign up
+            회원 가입
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -83,22 +98,17 @@ export default function Signup() {
                 />
               </Grid>
             </Grid>
-            <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-              Sign Up
+            <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+              회원 가입
             </Button>
-            <Link href="#" variant="body2">
+            <Link href="/login" variant="body2">
               <Button fullWidth variant="outlined">
-                LogIn
+                로그인
               </Button>
             </Link>
           </Box>
         </Box>
         <Box sx={{ height: 200 }} />
-        <Typography variant="body2" color="text.secondary" align="center">
-          {"Copyright © "}
-          Triple - Donate {new Date().getFullYear()}
-          {"."}
-        </Typography>
       </Container>
     </ThemeProvider>
   );

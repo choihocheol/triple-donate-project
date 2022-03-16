@@ -21,12 +21,15 @@ exports.login = async (req, res) => {
 exports.signup = async (req, res) => {
     
     try {   
-        const user = await UserModel.findOne({userName: req.body.userName});
-            
-        if(user){
-            return res.status(404).json({msg: "Already Singup"})
+        const checkUserId = await UserModel.findOne({userId: req.body.userId});
+        const checkUserName = await UserModel.findOne({userName: req.body.userName});
+        if(checkUserId){
+            return res.status(404).json({msg: "UserId is already singup"})
+        } else if(checkUserName){
+            return res.status(404).json({msg: "UserName is already singup"})
         }else{
             const User = new UserModel({
+                userId: req.body.UserId,
                 userName: req.body.userName,
                 password: req.body.password,
                 walletAddr: key.generateKeyring().address,

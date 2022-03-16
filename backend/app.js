@@ -39,7 +39,3 @@ app.use("/post", postRouter);
 module.exports = app.listen(PORT, () => {
   console.log(`Server is starting on ${PORT}`);
 });
-
-app.get("/", (req, res) => {
-  res.send("??");
-});

@@ -12,8 +12,8 @@ const MainContainer = styled.div`
 `;
 
 const TokenContainer = styled.div`
-  width: 28rem;
-  height: 40rem;
+  width: 20rem;
+  height: 32rem;
   background: #fff;
   border-radius: 15px;
   display: inline-block;
@@ -54,7 +54,7 @@ const Image = styled.img`
 `;
 const BottonContainer = styled.div`
   height: 20%;
-  margin: 0 40px;
+  margin: 0 25px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -62,11 +62,12 @@ const BottonContainer = styled.div`
 `;
 const DescFont = styled.div`
   margin-top: 5px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 400;
 `;
 const TitleFont = styled.div`
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 export default function Nft() {

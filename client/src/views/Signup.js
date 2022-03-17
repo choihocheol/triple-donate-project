@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,10 +17,14 @@ export default function Signup() {
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
+  const [usernameErr, setUsernameErr] = useState(true);
+  const [idErr, setIdErr] = useState(false);
+  const [pwErr, setPwErr] = useState(false);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:4999/user/singup", {
+      .post("http://localhost:4999/user/signup", {
         userName: userId,
         password: userPw,
       })
@@ -59,32 +63,39 @@ export default function Signup() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  error={usernameErr}
                   required
                   fullWidth
                   id="username"
                   label="User Name"
                   name="username"
                   autoComplete="username"
+                  helperText={usernameErr ? "이미 존재하는 UserName 입니다." : ""}
                   onChange={(e) => {
                     setUsername(e.target.value);
+                    setUsernameErr(false);
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  error={idErr}
                   required
                   fullWidth
                   id="ID"
                   label="ID"
                   name="id"
                   autoComplete="id"
+                  helperText={idErr ? "이미 존재하는 유저 ID 입니다." : ""}
                   onChange={(e) => {
                     setUserId(e.target.value);
+                    setIdErr(false);
                   }}
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  error={pwErr}
                   required
                   fullWidth
                   name="password"
@@ -92,8 +103,10 @@ export default function Signup() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  helperText={pwErr ? "잘못된 비밀번호 입니다." : ""}
                   onChange={(e) => {
                     setUserPw(e.target.value);
+                    setPwErr(false);
                   }}
                 />
               </Grid>

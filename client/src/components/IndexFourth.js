@@ -47,8 +47,8 @@ export default function IndexFourth() {
     <Box component="section" sx={{ display: "flex", bgcolor: "whitesmoke", overflow: "hidden" }}>
       <Container
         sx={{
-          mt: 15,
-          mb: 15,
+          mt: 23,
+          mb: 23,
           position: "relative",
           display: "flex",
           flexDirection: "column",

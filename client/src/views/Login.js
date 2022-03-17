@@ -9,12 +9,15 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import { Alert } from "@mui/material";
 
 const theme = createTheme();
 
 export default function Login() {
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
+  const [idErr, setIdErr] = useState(false);
+  const [pwErr, setPwErr] = useState(false);
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -54,19 +57,20 @@ export default function Login() {
           </Typography>
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField
+              error={idErr}
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              label="User ID"
               autoFocus
+              helperText={idErr ? "존재하지 않는 유저입니다" : ""}
               onChange={(e) => {
                 setUserId(e.target.value);
               }}
             />
             <TextField
+              error={pwErr}
               margin="normal"
               required
               fullWidth
@@ -74,16 +78,15 @@ export default function Login() {
               label="Password"
               type="password"
               id="password"
+              helperText={pwErr ? "잘못된 비밀번호 입니다." : ""}
               autoComplete="current-password"
               onChange={(e) => {
                 setUserPw(e.target.value);
               }}
             />
-
             <Button type="submit" onClick={handleSubmit} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               로그인
             </Button>
-
             <Link href="/signup" variant="body2">
               <Button fullWidth variant="outlined">
                 회원 가입

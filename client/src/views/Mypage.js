@@ -64,13 +64,14 @@ const BottomContainer = styled.div`
   flex-direction: column;
 `;
 const UserInfo = styled.div`
-  background-color: #393b45;
+  /* background-color: #393b45; */
+
   height: 450px;
-  width: 350px;
+  width: 330px;
   margin: 10vh auto;
   border-radius: 25px;
   padding-bottom: 1px;
-  box-shadow: 2px 2px 5px #4069e2;
+  box-shadow: 2px 2px 5px #919191;
 `;
 const NftContainer = styled.div`
   margin: 0 20px;
@@ -79,6 +80,65 @@ const NftContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(auto-fill, minmax(1fr, auto));
   margin-bottom: 60px;
+`;
+const ProfileContainer = styled.div`
+  display: flex;
+  position: relative;
+  background-color: #e6ebee;
+  width: 130px;
+  height: 130px;
+  margin: 40px auto;
+  margin-bottom: 30px;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px #919191;
+`;
+const Profile = styled.img`
+  display: inline;
+  height: 230px;
+  width: auto;
+  margin-left: -34px;
+`;
+const InfoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 230px;
+  /* background-color: #2c2c2c; */
+`;
+const InfoContents = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  flex-direction: row;
+  width: 90%;
+  height: 90px;
+  /* background-color: white; */
+`;
+const InfoContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 60px;
+  /* background-color: #2c2c2c; */
+`;
+const UserNameFont = styled.div`
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: 600;
+`;
+const TitleFont = styled.div`
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+`;
+const DescFont = styled.div`
+  font-size: 18px;
+  font-weight: 300;
 `;
 
 export default function Mypage() {
@@ -89,7 +149,34 @@ export default function Mypage() {
         <Divider />
         <TopContainer>
           <UserContainer>
-            <UserInfo></UserInfo>
+            <UserInfo>
+              <ProfileContainer></ProfileContainer>
+
+              {/* <Divider /> */}
+              <InfoContainer>
+                <UserNameFont>유저 네임</UserNameFont>
+                <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
+                  <InfoContent>
+                    <TitleFont> 프로젝트</TitleFont>
+                    <DescFont>3</DescFont>
+                  </InfoContent>
+                  <InfoContent>
+                    <TitleFont>기여한 프로젝트</TitleFont>
+                    <DescFont>2</DescFont>
+                  </InfoContent>
+                </InfoContents>
+                <InfoContents>
+                  <InfoContent>
+                    <TitleFont>TDT</TitleFont>
+                    <DescFont>30</DescFont>
+                  </InfoContent>
+                  <InfoContent>
+                    <TitleFont>NFT</TitleFont>
+                    <DescFont>5</DescFont>
+                  </InfoContent>
+                </InfoContents>
+              </InfoContainer>
+            </UserInfo>
           </UserContainer>
           <PostContainer>
             <ContentFont>나의 프로젝트</ContentFont>

@@ -84,11 +84,11 @@ export default function Login() {
                 setUserPw(e.target.value);
               }}
             />
-            <Button type="submit" onClick={handleSubmit} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button type="submit" onClick={handleSubmit} fullWidth variant="contained" sx={{ mt: 3, mb: 2, padding: "10px 0" }}>
               로그인
             </Button>
-            <Link href="/signup" variant="body2">
-              <Button fullWidth variant="outlined">
+            <Link href="/signup" underline="none">
+              <Button fullWidth variant="outlined" sx={{ padding: "10px 0" }}>
                 회원 가입
               </Button>
             </Link>

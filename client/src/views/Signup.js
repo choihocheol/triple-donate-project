@@ -111,11 +111,11 @@ export default function Signup() {
                 />
               </Grid>
             </Grid>
-            <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, padding: "10px 0" }}>
               회원 가입
             </Button>
-            <Link href="/login" variant="body2">
-              <Button fullWidth variant="outlined">
+            <Link href="/login" underline="none">
+              <Button fullWidth variant="outlined" sx={{ padding: "10px 0" }}>
                 로그인
               </Button>
             </Link>

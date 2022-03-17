@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+import styled from "styled-components";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import Link from "@mui/material/Link";
 import { Button, Typography } from "@mui/material";
 
 const item = {
@@ -25,6 +26,10 @@ const image = {
   height: 55,
   my: 4,
 };
+const BtnFont = styled.div`
+  font-size: 28px;
+  font-weight: 600;
+`;
 
 export default function IndexFourth() {
   useEffect(() => {
@@ -74,24 +79,31 @@ export default function IndexFourth() {
               <Box sx={number}>2</Box>
               <Box component="img" src="http://temp20.zsol.co.kr/icon_img/transform.svg" alt="transform" sx={image} />
               <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
-                자신의 데이터를 이용해 프로젝트에 기여
+                자신의 데이터를 이용해
+              </Typography>
+              <Typography sx={{ mt: 0.1, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
+                프로젝트에 기여
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={12} md={4}>
             <Box data-aos="fade-up" sx={item}>
               <Box sx={number}>3</Box>
-              <Box component="img" src="http://temp20.zsol.co.kr/icon_img/handshake09.svg" alt="handshake" sx={image} />
+              <Box component="img" src="http://temp20.zsol.co.kr/icon_img/handshake08.svg" alt="handshake" sx={image} />
               <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
-                {"기여한 프로젝트에 따른 증명서와 토큰 발급 "}
+                {"기여한 프로젝트에 따른 "}
+              </Typography>
+              <Typography sx={{ mt: 0.1, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
+                증명서와 토큰 발급{" "}
               </Typography>
             </Box>
           </Grid>
         </Grid>
-
-        <Button size="large" variant="contained" component="a" sx={{ mt: 13 }}>
-          시작하기
-        </Button>
+        <Link href="/login" underline="none">
+          <Button size="large" variant="contained" component="a" sx={{ mt: 18, padding: "5px 60px" }}>
+            <BtnFont>시작하기</BtnFont>
+          </Button>
+        </Link>
       </Container>
     </Box>
   );

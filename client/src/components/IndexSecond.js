@@ -55,7 +55,7 @@ export default function IndexSecond() {
               <Typography variant="h5" sx={{ my: 5, fontWeight: 600 }}>
                 의미 있는 프로젝트
               </Typography>
-              <Typography variant="p" sx={{ fontSize: "22px", fontWeight: 400 }}>
+              <Typography variant="p" sx={{ fontSize: "20px", fontWeight: 400 }}>
                 {"더 나은 사회를 위한 프로젝트에 기여할 수 있습니다"} <br /> {"지금 바로 당신을 필요로하는  "} <br /> {" 프로젝트에 도움이 되어주세요!"}
               </Typography>
             </Box>
@@ -66,7 +66,7 @@ export default function IndexSecond() {
               <Typography variant="h5" sx={{ my: 5, fontWeight: 600 }}>
                 필요한 데이터
               </Typography>
-              <Typography variant="h5" sx={{ mb: 0.3, fontSize: "22px", fontWeight: 400 }}>
+              <Typography variant="h5" sx={{ mb: 0.3, fontSize: "20px", fontWeight: 400 }}>
                 {"당신의 프로젝트에 적합한"} <br /> {" 데이터를 수집하세요! "} <br /> {" 당신의 의미있는 프로젝트를"} <br /> {" 위하여 더욱 적합한 데이터를 "}
                 <br />
                 {" 모을 수 있습니다! "}
@@ -79,7 +79,7 @@ export default function IndexSecond() {
               <Typography variant="h5" sx={{ my: 5, fontWeight: 600 }}>
                 토큰과 NFT를 통한 보상
               </Typography>
-              <Typography variant="h5" sx={{ mb: 0.3, fontSize: "22px", fontWeight: 400 }}>
+              <Typography variant="h5" sx={{ mb: 0.3, fontSize: "20px", fontWeight: 400 }}>
                 {"데이터를 기여한 후 토큰을 통해 보상을 받을 수 있습니다"} <br /> {"당신이 기여한 데이터를 통하여 세상은 조금 더 나은 세상이 될 것입니다."}
               </Typography>
             </Box>

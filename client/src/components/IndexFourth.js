@@ -27,7 +27,7 @@ const image = {
   my: 4,
 };
 const BtnFont = styled.div`
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
 `;
 
@@ -69,7 +69,7 @@ export default function IndexFourth() {
             <Box data-aos="fade-up" sx={item}>
               <Box sx={number}>1</Box>
               <Box component="img" src="http://temp20.zsol.co.kr/icon_img/document12.svg" alt="document" sx={image} />
-              <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
+              <Typography sx={{ mt: 3, fontSize: "24px", fontWeight: 400 }} variant="h5" align="center">
                 필요한 프로젝트 제안
               </Typography>
             </Box>
@@ -78,10 +78,10 @@ export default function IndexFourth() {
             <Box data-aos="fade-up" sx={item}>
               <Box sx={number}>2</Box>
               <Box component="img" src="http://temp20.zsol.co.kr/icon_img/transform.svg" alt="transform" sx={image} />
-              <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
+              <Typography sx={{ mt: 3, fontSize: "24px", fontWeight: 400 }} variant="h5" align="center">
                 자신의 데이터를 이용해
               </Typography>
-              <Typography sx={{ mt: 0.1, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
+              <Typography sx={{ mt: 0.1, fontSize: "24px", fontWeight: 400 }} variant="h5" align="center">
                 프로젝트에 기여
               </Typography>
             </Box>
@@ -90,10 +90,10 @@ export default function IndexFourth() {
             <Box data-aos="fade-up" sx={item}>
               <Box sx={number}>3</Box>
               <Box component="img" src="http://temp20.zsol.co.kr/icon_img/handshake08.svg" alt="handshake" sx={image} />
-              <Typography sx={{ mt: 3, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
+              <Typography sx={{ mt: 3, fontSize: "24px", fontWeight: 400 }} variant="h5" align="center">
                 {"기여한 프로젝트에 따른 "}
               </Typography>
-              <Typography sx={{ mt: 0.1, fontSize: "26px", fontWeight: 400 }} variant="h5" align="center">
+              <Typography sx={{ mt: 0.1, fontSize: "24px", fontWeight: 400 }} variant="h5" align="center">
                 증명서와 토큰 발급{" "}
               </Typography>
             </Box>

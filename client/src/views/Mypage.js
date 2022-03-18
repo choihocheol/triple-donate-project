@@ -1,4 +1,4 @@
-import { Divider } from "@mui/material";
+import { Avatar, Divider } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import Nft from "../components/Nft";
@@ -64,14 +64,14 @@ const BottomContainer = styled.div`
   flex-direction: column;
 `;
 const UserInfo = styled.div`
-  /* background-color: #393b45; */
+  /* background-color: #a9a9a9; */
 
   height: 450px;
   width: 330px;
   margin: 10vh auto;
   border-radius: 25px;
   padding-bottom: 1px;
-  box-shadow: 2px 2px 5px #919191;
+  box-shadow: 1px 3px 3px 3px #919191;
 `;
 const NftContainer = styled.div`
   margin: 0 20px;
@@ -91,7 +91,7 @@ const ProfileContainer = styled.div`
   margin-bottom: 30px;
   overflow: hidden;
   border-radius: 50%;
-  box-shadow: 1px 1px 5px #919191;
+  box-shadow: 1.2px 1.2px 1.2px 1px #919191;
 `;
 const Profile = styled.img`
   display: inline;
@@ -135,10 +135,15 @@ const TitleFont = styled.div`
   margin-bottom: 10px;
   font-size: 18px;
   font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
 `;
 const DescFont = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 500;
+  color: #2c2c2c;
 `;
 
 export default function Mypage() {
@@ -154,7 +159,7 @@ export default function Mypage() {
 
               {/* <Divider /> */}
               <InfoContainer>
-                <UserNameFont>유저 네임</UserNameFont>
+                <UserNameFont>유저 이름</UserNameFont>
                 <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
                   <InfoContent>
                     <TitleFont> 프로젝트</TitleFont>
@@ -168,11 +173,16 @@ export default function Mypage() {
                 <InfoContents>
                   <InfoContent>
                     <TitleFont>TDT</TitleFont>
-                    <DescFont>30</DescFont>
+                    <DescFont>
+                      30
+                      <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="share" src="http://temp20.zsol.co.kr/icon_img/share01.svg" />
+                    </DescFont>
                   </InfoContent>
                   <InfoContent>
                     <TitleFont>NFT</TitleFont>
-                    <DescFont>5</DescFont>
+                    <DescFont>
+                      5 <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="trophy" src="http://temp20.zsol.co.kr/icon_img/trophy.svg" />
+                    </DescFont>
                   </InfoContent>
                 </InfoContents>
               </InfoContainer>

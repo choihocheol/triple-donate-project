@@ -117,7 +117,7 @@
 			</td>
 			<td>Blockchain</td>
 			<td>
-				주소와 개인키 생성, KIP-7, KIP-17, mint, transfer, burn
+				주소와 개인키 생성, KIP-7, KIP-37, mint, transfer, burn
 			</td>
 		</tr>
 	</tbody>

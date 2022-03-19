@@ -1,20 +1,17 @@
 # 목차
 
-1. [프로젝트 소개](#프로젝트-소개)
-
-2. [사용된 기술 스택](#사용된-기술-스택)
-
-3. [유저 플로우](#유저-플로우)
-
-4. [토큰 이코노미](#토큰-이코노미)
-
-5. [API Docs](#api-docs)
-
-6. [규칙](#규칙)
-
-7. [회의록](#회의록)
-
-8. [팀 소개](#팀-소개)
+- [프로젝트 소개](#프로젝트-소개)
+- [사용된 기술 스택](#사용된-기술-스택)
+  - [Front-End](#front-end)
+  - [Back-End](#back-end)
+  - [Blockchain](#blockchain)
+- [유저 플로우](#유저-플로우)
+- [토큰 이코노미](#토큰-이코노미)
+- [API Docs](#api-docs)
+- [구현해야 할 기능들 목록](#구현해야-할-기능들-목록)
+- [규칙](#규칙)
+- [회의록](#회의록)
+- [팀 소개](#팀-소개)
 
 # 프로젝트 소개
 
@@ -61,6 +58,27 @@
 
 # API Docs
 
+# 구현해야 할 기능들 목록
+
+## Bare Minimum
+
+- 회원가입 기능 구현
+- 로그인(session) 기능 구현
+- 마이페이지 기능 구현
+  - 보유 토큰량
+  - 제안 프로젝트 목록
+  - 보유 NFTs
+- 게시물 리스트(pagination) 기능 구현
+- 게시물 업로드 기능 구현
+
+## Advanced
+
+- 카테고리화된 게시판 구현
+- 게시물 조회수 기능 구현
+- 악의적인 유저 신고 및 패널티 기능 구현
+- TDT swap 기능 구현
+- 보유 NFT 개수에 따라 할인되는 기능 구현
+
 # 규칙
 
 1. Github Process: git pull *upstream main => git add => git commit => git push *origin main => pull request
@@ -80,7 +98,6 @@
 		<tr>
 			<th>Name</th>
 			<th>Role</th>
-			<th>To Do List</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -89,36 +106,24 @@
 				<a href="https://github.com/mingi3442">이민기</a>
 			</td>
 			<td>Front-End</td>
-			<td>
-				main, login, signup, mypage user information, mypage user token balance, mypage user NFTs display
-			</td>
 		</tr>
 		<tr>
 			<td>
 				<a href="https://github.com/djshinnn">신동주</a>
 			</td>
 			<td>Front-End</td>
-			<td>
-				header, footer, 게시물 등록, 게시물 리스트, 게시물 detail display
-			</td>
 		</tr>
 		<tr>
 			<td>
 				<a href="https://github.com/Colvet">김신학</a>
 			</td>
 			<td>Back-End</td>
-			<td>
-				login, session, 게시물 등록, 게시물 리스트, 게시물 detail information
-			</td>
 		</tr>
 		<tr>
 			<td>
 				<a href="https://github.com/choihocheol">최호철</a>
 			</td>
 			<td>Blockchain</td>
-			<td>
-				주소와 개인키 생성, KIP-7, KIP-37, mint, transfer, burn
-			</td>
 		</tr>
 	</tbody>
 </table>

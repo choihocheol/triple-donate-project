@@ -9,6 +9,8 @@
 - [토큰 이코노미](#토큰-이코노미)
 - [API Docs](#api-docs)
 - [구현해야 할 기능들 목록](#구현해야-할-기능들-목록)
+  - [Bare Minimum](#bare-minimum)
+  - [Advanced](#advanced)
 - [규칙](#규칙)
 - [회의록](#회의록)
 - [팀 소개](#팀-소개)

@@ -6,12 +6,14 @@ const UserController = require("../controller/UserController");
 router.post("/login", UserController.login);
 
 // signup
-router.post("/singup", UserController.signup);
+router.post("/signup", UserController.signup);
 
 // get Mylist Data
 router.post("/mylist", UserController.getMyData);
 
 // logout
-// router.post("logout", UserController.logout);
+router.post("/logout", UserController.logout);
+
+
 
 module.exports = router;

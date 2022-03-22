@@ -22,6 +22,9 @@ const PostSchema = new mongoose.Schema({
         type: Array
         
     },
+    contents:{
+        type: String,
+    },
     seq: {
         type: Number
     }

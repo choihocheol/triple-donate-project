@@ -9,7 +9,8 @@ exports.login = async (req, res) => {
         const user = await UserModel.findOne({userId: userId, password: password});        
         if(user){
             req.session.loggedIn = true;
-            req.session.user = user;
+            req.session.userId = user.userId;
+            console.log(req.session)
             return res.status(200).json({msg: "Success login"});
         }else{
             return res.status(400).json({msg: "UserName, password is not Correct"});
@@ -25,7 +26,7 @@ exports.login = async (req, res) => {
 // singup 처리
 exports.signup = async (req, res) => {
     const { userId, userName, password } = req.body;
-    console.log(userId, userName, password)
+    
     try {   
         
         const checkUserId = await UserModel.exists({userId: userId});
@@ -48,7 +49,7 @@ exports.signup = async (req, res) => {
         }
         
   } catch (err) {
-      console.log(err);
+      
       return res.status(400).json({msg: "Post error"});
   }
 };
@@ -79,7 +80,7 @@ exports.getMyData = async (req, res) => {
 exports.logout = async (req, res) => {
     try{
         req.session.destroy();
-        res.stats(200).json({msg: "Success logout"});
+        res.status(200).json({msg: "Success logout"});
     }catch(err){
         console.log(err);
     }

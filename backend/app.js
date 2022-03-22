@@ -8,7 +8,7 @@ require("dotenv").config();
 //ssesion
 const passport = require('passport');
 const session = require('express-session');
-import { localsMiddleware, checkLoggedIn } from "./lib/middleware.js";
+const { localsMiddleware } = require("./libs/middleware");
 
 const app = express();
 
@@ -47,7 +47,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(localsMiddleware);
-app.use(checkLoggedIn);
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -53,12 +53,7 @@ const ImageIconButton = styled(ButtonBase)(({ theme }) => ({
     transition: theme.transitions.create("opacity"),
   },
 }));
-// https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80
-// https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2502&q=80
-// https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2048&q=80
-// https://images.unsplash.com/photo-1590874023110-f82d4c63b599?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80
-// https://images.unsplash.com/photo-1559734834-b4517b180a62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80
-// https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1036&q=80
+
 const images = [
   {
     url: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=400&q=80",
@@ -94,9 +89,8 @@ const images = [
 
 export default function IndexThird() {
   return (
-    <Container component="section" sx={{ mt: 8, mb: 4 }}>
-      <Typography variant="h4" marked="center" align="center" component="h2">
-        {/* For all tastes and all desires */}
+    <Container component="section" sx={{ mt: 10, mb: 15 }}>
+      <Typography variant="h4" marked="center" align="center" component="h2" sx={{ fontWeight: 600 }}>
         활용 영역
       </Typography>
       <Box sx={{ mt: 8, display: "flex", flexWrap: "wrap" }}>

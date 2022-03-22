@@ -20,13 +20,13 @@ mongoose
   .catch((e) => console.error(e));
 
 // client cors 설정
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//     methods: ["GET", "POST", "OPTIONS"],
-//   })
-// );
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+  })
+);
 
 //session 설정
 const MongoStore = require('connect-mongo');
@@ -47,7 +47,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(localsMiddleware);
-
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -16,7 +16,8 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     balacne:{
-        type: Number
+        type: Number,
+        default: 0
     },
     walletAddr: {
         type: String

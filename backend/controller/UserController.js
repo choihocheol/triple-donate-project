@@ -1,4 +1,5 @@
 const UserModel = require("../model/Users");
+const PostModel = require("../model/Posts");
 const key = require("../blockchain/login");
 
 // login 처리
@@ -58,16 +59,14 @@ exports.signup = async (req, res) => {
 exports.getMyData = async (req, res) => {
     try{
         // body? session? seq 로 바꾸기
-        const user = await UserModel.findOne({userName: req.params.username});
+        const userData = await UserModel.findOne({userId: req.session.userId});
+        const postData = await PostModel.find({writer: req.session.userId});
         
-        if(!user){
+        if(!userData){
             return res.status(400).json({msg: "Session is expired"});
         }else{
-            const {userData, data} = {
-                walletAddr: user.walletAddr,
-                data: "Data"
-            }
-            return res.status(201).json({data: userData});
+            
+            return res.status(200).json({userData: userData, postData: postData});
         }
 
     }

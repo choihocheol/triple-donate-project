@@ -1,6 +1,6 @@
 # API Docs
 
-## /user/singup (POST)
+## /user/signup (POST)
 
 Create new user
 
@@ -8,7 +8,8 @@ Create new user
 
 ```json
 {
-  "userName": "가나다@naver.com",
+  "userId": "userId",
+  "userName" : "abcd",
   "password": "1234"
 }
 ```
@@ -16,21 +17,29 @@ Create new user
 - **Response**
 
 ```json
+// userId 중복일 경우(400)
 {
-  "user_name": "가나다",
-  "user_email": "가나다@naver.com",
+  "msg": "UserId is already singup"
+}
+// userName 중복일 경우(400)
+{
+  "msg":  "UserName is already singup"
+}
+// 성공(200)
+{
+  "msg":  "Success signup"
 }
 ```
 
 ## /user/login (POST)
 
-Create new user
+Login user
 
 - **Request**
 
 ```json
 {
-  "userName": "가나다@naver.com",
+  "userId": "userId",
   "password": "1234"
 }
 ```
@@ -38,10 +47,43 @@ Create new user
 - **Response**
 
 ```json
+// 성공(200)
 {
-  "user_name": "가나다",
-  "user_email": "가나다@naver.com",
-  
+  "msg": "Success login",
+}
+// 실패(400)
+{
+  "msg": "UserName, password is not Correct"
 }
 ```
 
+## /user/logout (POST)
+
+Logout user
+
+- **Response**
+
+```json
+// 성공(200)
+{
+  "msg": "Success logout",
+}
+```
+
+
+## /post (GET)
+
+Get Post List
+
+- **Response**
+
+```json
+// 성공(200)
+{
+  "data": {{Post1, Post2, Post3 ...} }
+}
+// 실패(400)
+{
+  "msg": err
+}
+```

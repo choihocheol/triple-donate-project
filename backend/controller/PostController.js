@@ -6,7 +6,7 @@ exports.getPostList = async (req, res) => {
         // postData 전처리
         const postData = await PostModel.find().exec();
         
-        return res.status(201).json({data: postData});
+        return res.status(200).json({data: postData});
     }
     
     catch(err){
@@ -25,7 +25,7 @@ exports.savePost = async (req,res) => {
         });
 
         await newPost.save();
-        return res.status(201).json({msg: "Success Post save"});
+        return res.status(200).json({msg: "Success Post save"});
 
     }catch(err){
         console.log(err)
@@ -38,7 +38,7 @@ exports.getPostFindBySeq = async (req,res) => {
     try{
         const post = await PostModel.findOne({seq: req.params.seq}).exec();
         if(post){
-            return res.status(201).json({data: post});
+            return res.status(200).json({data: post});
         }else{
             return res.status(400).json({msg: "Seq is not valid"});
         }

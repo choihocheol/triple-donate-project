@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 // User mmodel
 const UserSchema = new mongoose.Schema({
+    userId: {
+        type: String,
+        required: true,
+        unique: true
+    },
     userName:{
         type: String,
         required: true
@@ -11,7 +16,8 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
     balacne:{
-        type: Number
+        type: Number,
+        default: 0
     },
     walletAddr: {
         type: String

@@ -4,6 +4,7 @@ import IndexSecond from "../components/IndexSecond";
 import IndexThird from "../components/IndexThird";
 import IndexFourth from "../components/IndexFourth";
 import axios from "axios";
+import store, { setUser } from "../store";
 
 export default function Home() {
   useEffect(() => {
@@ -11,8 +12,14 @@ export default function Home() {
       .get("http://localhost:4999/user/mylist")
       .then((res) => {
         console.log(res);
+        store.dispatch(setUser(res.data.userData));
       })
+
       .catch((err) => console.log(err));
+  }, []);
+  useEffect(() => {
+    const data = store.getState();
+    console.log("store1133", data);
   }, []);
   return (
     <>

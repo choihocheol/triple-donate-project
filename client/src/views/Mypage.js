@@ -1,7 +1,10 @@
 import { Avatar, Divider } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Nft from "../components/Nft";
+import axios from "axios";
+import store, { setUser } from "../store";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   position: inherit;
@@ -147,6 +150,8 @@ const DescFont = styled.div`
 `;
 
 export default function Mypage() {
+  useSelector((state) => console.log(state));
+
   return (
     <Container>
       <HeaderContainer>

@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import store, { setUser } from "../store";
 const theme = createTheme();
 axios.defaults.withCredentials = true;
 export default function Login() {
@@ -27,6 +28,7 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res);
+        store.dispatch(setUser(res.data));
         setUserId("");
         setUserPw("");
         history.push("/");

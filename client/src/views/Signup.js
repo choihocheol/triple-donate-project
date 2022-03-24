@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -17,27 +18,33 @@ export default function Signup() {
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
-  const [usernameErr, setUsernameErr] = useState(true);
+  const [usernameErr, setUsernameErr] = useState(false);
   const [idErr, setIdErr] = useState(false);
   const [pwErr, setPwErr] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post("http://localhost:4999/user/signup", {
-        userName: userId,
+        userId: userId,
+        userName: username,
         password: userPw,
       })
       .then((res) => {
-        console.log(res);
-        console.log("OK");
         setUsername("");
         setUserId("");
         setUserPw("");
+        history.push("/login");
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
+          console.log(err.response.data.msg);
+          if (err.response.data.msg === "UserId is already singup") {
+            setIdErr(true);
+          } else if (err.response.data.msg === "UserName is already singup") {
+            setUsernameErr(true);
+          }
         }
       });
   };
@@ -63,22 +70,6 @@ export default function Signup() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  error={usernameErr}
-                  required
-                  fullWidth
-                  id="username"
-                  label="User Name"
-                  name="username"
-                  autoComplete="username"
-                  helperText={usernameErr ? "이미 존재하는 UserName 입니다." : ""}
-                  onChange={(e) => {
-                    setUsername(e.target.value);
-                    setUsernameErr(false);
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
                   error={idErr}
                   required
                   fullWidth
@@ -93,6 +84,23 @@ export default function Signup() {
                   }}
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  error={usernameErr}
+                  required
+                  fullWidth
+                  id="username"
+                  label="User Name"
+                  name="username"
+                  autoComplete="username"
+                  helperText={usernameErr ? "이미 존재하는 UserName 입니다." : ""}
+                  onChange={(e) => {
+                    setUsername(e.target.value);
+                    setUsernameErr(false);
+                  }}
+                />
+              </Grid>
+
               <Grid item xs={12}>
                 <TextField
                   error={pwErr}
@@ -111,11 +119,11 @@ export default function Signup() {
                 />
               </Grid>
             </Grid>
-            <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button onClick={handleSubmit} type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2, padding: "10px 0" }}>
               회원 가입
             </Button>
-            <Link href="/login" variant="body2">
-              <Button fullWidth variant="outlined">
+            <Link href="/login" underline="none">
+              <Button fullWidth variant="outlined" sx={{ padding: "10px 0" }}>
                 로그인
               </Button>
             </Link>

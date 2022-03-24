@@ -5,6 +5,7 @@ import { Avatar, Button } from "@mui/material";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
+import Link from "@mui/material/Link";
 
 const Container = styled.div`
   width: 100%;
@@ -60,8 +61,12 @@ const MainContentFont = styled.div`
 `;
 const ContentFont = styled.div`
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 5px;
+`;
+const BtnFont = styled.div`
+  font-size: 18px;
+  font-weight: 500;
 `;
 
 export default function IndexFirst() {
@@ -94,12 +99,16 @@ export default function IndexFirst() {
             <ContentFont>당신의 소중한 데이터를 필요로 합니다</ContentFont>
           </ContentContainer>
           <BtnContainer>
-            <Button size="large" variant="contained">
-              시작하기
-            </Button>
-            <Button sx={{ ml: 5 }} size="large" variant="outlined">
-              둘러보기
-            </Button>
+            <Link href="/login" underline="none">
+              <Button size="large" variant="contained">
+                <BtnFont>시작하기</BtnFont>
+              </Button>
+            </Link>
+            <Link href="/post" underline="none">
+              <Button sx={{ ml: 5 }} size="large" variant="outlined">
+                <BtnFont>둘러보기</BtnFont>
+              </Button>
+            </Link>
           </BtnContainer>
         </LeftContainer>
         <RightContainer>

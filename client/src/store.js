@@ -10,12 +10,14 @@ export const setUser = (userInfo) => {
   };
 };
 
-const initialState = {};
+const initialState = {
+  isLogin: false,
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER:
-      return { ...action.userInfo };
+      return { ...action.userInfo, isLogin: true };
     case LOGOUT_USER:
       return (state = {});
     default:

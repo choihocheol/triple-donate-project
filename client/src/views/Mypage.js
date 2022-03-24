@@ -150,8 +150,8 @@ const DescFont = styled.div`
 `;
 
 export default function Mypage() {
-  useSelector((state) => console.log(state));
-
+  const userInfo = useSelector((state) => state);
+  console.log(userInfo);
   return (
     <Container>
       <HeaderContainer>
@@ -164,7 +164,7 @@ export default function Mypage() {
 
               {/* <Divider /> */}
               <InfoContainer>
-                <UserNameFont>유저 이름</UserNameFont>
+                <UserNameFont>{userInfo.userName}</UserNameFont>
                 <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
                   <InfoContent>
                     <TitleFont> 프로젝트</TitleFont>
@@ -179,7 +179,7 @@ export default function Mypage() {
                   <InfoContent>
                     <TitleFont>TDT</TitleFont>
                     <DescFont>
-                      30
+                      {userInfo.balacne === 0 ? "0" : userInfo.balance}
                       <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="share" src="http://temp20.zsol.co.kr/icon_img/share01.svg" />
                     </DescFont>
                   </InfoContent>

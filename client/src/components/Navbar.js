@@ -16,7 +16,7 @@ const Navbar = () => {
           <NavLink to="/post" activeStyle>
             Post
           </NavLink>
-          <NavLink to="/Profile" activeStyle>
+          <NavLink to="/mypage" activeStyle>
             Profile
           </NavLink>
           <NavLink to="/create" activeStyle>

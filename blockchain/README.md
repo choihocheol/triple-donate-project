@@ -22,9 +22,9 @@ Create `.env` file by copying `.env.template`:
 $ cp .env.template .env
 ```
 
-The below table show the descroption of each environment variable in `.env.template`:
+The below table show the description of each environment variable in `.env.template`:
 
-| Variable    | Descroption                           |
+| Variable    | Description                           |
 | ----------- | ------------------------------------- |
 | PRIVATE_KEY | Private key of baobab network account |
 

@@ -8,83 +8,119 @@ function Footer() {
       <div class="footer__links">
         <div className="footer__link-wrapper">
           <div class="footer__link-items">
-            <h2>About Us</h2>
-            <Link to="/sign-up">How it works</Link>
-            <Link to="/">Testimonials</Link>
-            <Link to="/">Careers</Link>
-            <Link to="/">Investors</Link>
-            <Link to="/">Terms of Service</Link>
+            <img
+              src={require("../assets/logo_white.png")}
+              alt="logo"
+              height="150px"
+              width="220px"
+            />
+            <h2>3Donate</h2>
+            <Link className="footer__link--address">
+              3Donate는 데이터 기부 플랫폼으로,
+              <br /> 데이터를 기부하는 유저는 해당 기부한 곳에 따른 NFT, 토큰이
+              지급되는 플랫폼입니다.
+            </Link>
+            {/* <img
+              className="footer__team--logo"
+              src={require("../assets/logo_white.png")}
+              alt="logo"
+              height="150px"
+              width="220px"
+            /> */}
           </div>
           <div class="footer__link-items">
-            <h2>Contact Us</h2>
-            <Link to="/">Contact</Link>
-            <Link to="/">Support</Link>
-            <Link to="/">Destinations</Link>
-            <Link to="/">Sponsorships</Link>
+            <h2>FrontEnd</h2>
+            <Link className="footer__link--name">신동주</Link>
+            <Link
+              className="footer__link--address"
+              onClick={() => window.open("https://velog.io/@tls980824")}
+            >
+              https://velog.io/@tls980824
+            </Link>
+            <Link
+              className="footer__link--address"
+              onClick={() => window.open("https://github.com/djshinnn")}
+            >
+              https://github.com/djshinnn
+            </Link>
+            <br />
+            <Link className="footer__link--name">이민기</Link>
+            <Link
+              className="footer__link--address"
+              onClick={() => window.open("https://velog.io/@moment_log")}
+            >
+              https://velog.io/@moment_log
+            </Link>
+            <Link
+              className="footer__link--address"
+              onClick={() => window.open("https://github.com/mingi3442")}
+            >
+              https://github.com/mingi3442
+            </Link>
           </div>
-        </div>
-        <div className="footer__link-wrapper">
           <div class="footer__link-items">
-            <h2>Videos</h2>
-            <Link to="/">Submit Video</Link>
-            <Link to="/">Ambassadors</Link>
-            <Link to="/">Agency</Link>
-            <Link to="/">Influencer</Link>
+            <h2>BackEnd</h2>
+            <Link className="footer__link--name">김신학</Link>
+            <Link
+              className="footer__link--address"
+              onClick={() =>
+                window.open("https://github.com/Colvet/CodeStates_TIL")
+              }
+            >
+              https://github.com/Colvet/CodeStates_TIL
+            </Link>
+            <Link
+              className="footer__link--address"
+              onClick={() => window.open("https://github.com/Colvet")}
+            >
+              https://github.com/Colvet
+            </Link>
           </div>
           <div class="footer__link-items">
-            <h2>Social Media</h2>
-            <Link to="/">Instagram</Link>
-            <Link to="/">Facebook</Link>
-            <Link to="/">Youtube</Link>
-            <Link to="/">Twitter</Link>
+            <h2>Blockchain</h2>
+            <Link className="footer__link--name">최호철</Link>
+            <Link
+              className="footer__link--address"
+              onClick={() => window.open("https://velog.io/@choihocheol")}
+            >
+              https://velog.io/@choihocheol
+            </Link>
+            <Link
+              className="footer__link--address"
+              onClick={() => window.open("https://github.com/choihocheol")}
+            >
+              https://github.com/choihocheol
+            </Link>
           </div>
         </div>
       </div>
       <section class="footer__social-media">
         <div class="footer__social-media-wrap">
           <div class="footer__footer-logo">
-            <Link to="/" className="footer__social-logo">
-              3Donate
-            </Link>
+            <Link className="footer__social-logo">3Donate</Link>
           </div>
           <small class="footer__website-rights">3Donate © 2022</small>
           <div class="footer__social-icons">
             <Link
               class="footer__social-icon-link facebook"
-              to="/"
-              target="_blank"
               aria-label="Facebook"
             >
               <i class="fab fa-facebook-f" />
             </Link>
             <Link
               class="footer__social-icon-link instagram"
-              to="/"
-              target="_blank"
               aria-label="Instagram"
             >
               <i class="fab fa-instagram" />
             </Link>
-            <Link
-              class="footer__social-icon-link youtube"
-              to="/"
-              target="_blank"
-              aria-label="Youtube"
-            >
+            <Link class="footer__social-icon-link youtube" aria-label="Youtube">
               <i class="fab fa-youtube" />
             </Link>
-            <Link
-              class="footer__social-icon-link twitter"
-              to="/"
-              target="_blank"
-              aria-label="Twitter"
-            >
+            <Link class="footer__social-icon-link twitter" aria-label="Twitter">
               <i class="fab fa-twitter" />
             </Link>
             <Link
               class="footer__social-icon-link twitter"
-              to="/"
-              target="_blank"
               aria-label="LinkedIn"
             >
               <i class="fab fa-linkedin" />

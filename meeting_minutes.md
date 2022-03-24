@@ -84,3 +84,13 @@ Fungible token에 대한 문제가 있는건 분명하고 어쩌면 해당 프�
 KIP-17 => KIP-37 변경됨
 
 MongoDB nftId 추가
+
+## 22.03.24
+
+동주님 게시물 부분 완성 backend랑 협력만하면됨
+
+민기님 backend랑 로그인 부분 완성했음 session 까지 구현 거의 완료
+
+신학님 로그인 부분 frontend랑 완성했고, pagination 기능 구현 중
+
+최호철 블록체인단 다 함 배포 하는 중

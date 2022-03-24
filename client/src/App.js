@@ -8,6 +8,9 @@ import View from "./components/View";
 import Write from "./components/Write";
 import Home from "./pages/Home";
 import Post from "./views/Post";
+import Mypage from "./views/Mypage";
+import Signup from "./views/Signup";
+import Nft from "./components/Nft";
 
 // const dummyData = [
 //   {
@@ -159,8 +162,17 @@ function App() {
               <Write />
             </Route>
             <Route path="/profile">Profile</Route>
-            <Route path="/signin">
+            <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/nft">
+              <Nft />
+            </Route>
+            <Route path="/mypage">
+              <Mypage />
             </Route>
           </Switch>
           <Footer />

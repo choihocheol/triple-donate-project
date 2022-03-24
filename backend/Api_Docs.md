@@ -19,11 +19,11 @@ Create new user
 ```json
 // userId 중복일 경우(400)
 {
-  "msg": "UserId is already singup"
+  "msg": "UserId is already signup"
 }
 // userName 중복일 경우(400)
 {
-  "msg":  "UserName is already singup"
+  "msg":  "UserName is already signup"
 }
 // 성공(200)
 {

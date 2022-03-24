@@ -11,7 +11,7 @@ router.post("/login", UserController.login);
 router.post("/signup", UserController.signup);
 
 // get Mylist Data
-router.post("/mylist", UserController.getMyData);
+router.get("/mylist", UserController.getMyData);
 
 // logout
 router.post("/logout", UserController.logout);

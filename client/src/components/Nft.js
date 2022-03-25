@@ -13,7 +13,7 @@ const MainContainer = styled.div`
 
 const TokenContainer = styled.div`
   width: 20rem;
-  height: 32rem;
+  height: 31rem;
   background: #fff;
   border-radius: 15px;
   display: inline-block;

@@ -9,31 +9,38 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { Alert } from "@mui/material";
-
+import { useHistory } from "react-router-dom";
+import store, { setUser } from "../store";
 const theme = createTheme();
-
+axios.defaults.withCredentials = true;
 export default function Login() {
   const [userId, setUserId] = useState("");
   const [userPw, setUserPw] = useState("");
   const [idErr, setIdErr] = useState(false);
   const [pwErr, setPwErr] = useState(false);
+  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post("http://localhost:4999/user/login", {
-        userName: userId,
+        userId: userId,
         password: userPw,
       })
       .then((res) => {
         console.log(res);
-        console.log("OK");
+        store.dispatch(setUser(res.data));
         setUserId("");
         setUserPw("");
+        history.push("/");
       })
       .catch((err) => {
+        console.log(err.response.data);
         if (err) {
-          console.log("에러", err);
+          if (err.response.data.msg === "UserId is not exist") {
+            setIdErr(true);
+          } else if (err.response.data.msg === "Password is not Correct") {
+            setPwErr(true);
+          }
         }
       });
   };
@@ -67,6 +74,7 @@ export default function Login() {
               helperText={idErr ? "존재하지 않는 유저입니다" : ""}
               onChange={(e) => {
                 setUserId(e.target.value);
+                setIdErr(false);
               }}
             />
             <TextField
@@ -82,13 +90,14 @@ export default function Login() {
               autoComplete="current-password"
               onChange={(e) => {
                 setUserPw(e.target.value);
+                setPwErr(false);
               }}
             />
-            <Button type="submit" onClick={handleSubmit} fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+            <Button type="submit" onClick={handleSubmit} fullWidth variant="contained" sx={{ mt: 3, mb: 2, padding: "10px 0" }}>
               로그인
             </Button>
-            <Link href="/signup" variant="body2">
-              <Button fullWidth variant="outlined">
+            <Link href="/signup" underline="none">
+              <Button fullWidth variant="outlined" sx={{ padding: "10px 0" }}>
                 회원 가입
               </Button>
             </Link>

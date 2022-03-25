@@ -77,7 +77,8 @@ return value: Promise
 
 ```json
 {
-  "nftId": "1" // 생성된 NFT의 ID
+  "nftId": "1", // 생성된 NFT의 ID
+  "imageURL": "https://gateway.pinata.cloud/ipfs/..." // NFT 이미지 URL
 }
 ```
 

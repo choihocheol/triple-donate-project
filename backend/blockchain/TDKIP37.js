@@ -23,6 +23,7 @@ module.exports = {
 
       const output = {
         nftId: await id,
+        imageURL: imageURL,
       };
       await transaction;
       return output;

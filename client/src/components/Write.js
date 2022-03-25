@@ -10,8 +10,8 @@ import Dataheader from "./Dataheader";
 const Write = () => {
   const titleInput = useRef();
   const contentInput = useRef();
-  const writerInput = useRef();
-  const passwordInput = useRef();
+  // const writerInput = useRef();
+  // const passwordInput = useRef();
   const labelInput = useRef();
   const typeInput = useRef();
 
@@ -30,8 +30,8 @@ const Write = () => {
   const [state, setState] = useState({
     title: "",
     content: "",
-    writer: "",
-    password: "",
+    // writer: "",
+    // password: "",
   });
 
   const handleChangeState = (e) => {
@@ -48,12 +48,12 @@ const Write = () => {
     } else if (state.content.length < 1) {
       contentInput.current.focus();
       return;
-    } else if (state.writer.length < 1) {
-      writerInput.current.focus();
-      return;
-    } else if (state.password.length < 1) {
-      passwordInput.current.focus();
-      return;
+      // } else if (state.writer.length < 1) {
+      //   writerInput.current.focus();
+      //   return;
+      // } else if (state.password.length < 1) {
+      //   passwordInput.current.focus();
+      //   return;
     } else if (inputFields[0].label.length < 1) {
       labelInput.current.focus();
       return;
@@ -64,7 +64,7 @@ const Write = () => {
 
     onCreate(
       state.title,
-      state.writer,
+      // state.writer,
       state.content,
       // inputFields
       inputFields[0].label,
@@ -75,7 +75,7 @@ const Write = () => {
     history.push("/post");
     console.log(
       state.title,
-      state.writer,
+      // state.writer,
       state.content,
       inputFields
       // inputFields[0].label,
@@ -117,7 +117,7 @@ const Write = () => {
             </dl>
           </div>
           <div className="board__write--info">
-            <dl>
+            {/* <dl>
               <dt>글쓴이</dt>
               <dd>
                 <input
@@ -129,8 +129,8 @@ const Write = () => {
                   onChange={handleChangeState}
                 ></input>
               </dd>
-            </dl>
-            <dl>
+            </dl> */}
+            {/* <dl>
               <dt>비밀번호</dt>
               <dd>
                 <input
@@ -142,7 +142,7 @@ const Write = () => {
                   onChange={handleChangeState}
                 ></input>
               </dd>
-            </dl>
+            </dl> */}
             <div className="board__write--img" onSubmit={handleSubmit}>
               {inputFields.map((inputField, index) => (
                 <div key={index}>

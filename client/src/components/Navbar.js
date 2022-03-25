@@ -16,8 +16,8 @@ const Navbar = () => {
           <img
             src={require("../assets/logo_white.png")}
             alt="logo"
-            height="120px"
-            width="200px"
+            height="100px"
+            width="170px"
           />
         </NavLink>
         <Bars />

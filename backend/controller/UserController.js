@@ -13,7 +13,8 @@ exports.login = async (req, res) => {
         if(user){
             req.session.loggedIn = true;
             req.session.userId = user.userId;
-            console.log(req.session)
+            req.session.walletAddr = user.walletAddr;
+
             return res.status(200).json({msg: "Success login"});
         }else if (!checkUserId) {
             return res.status(400).json({ msg: "UserId is not exist" });

@@ -8,9 +8,6 @@ const PostSchema = new mongoose.Schema({
     title:{
         type: String,
     },
-    description: {
-        type: String,
-    },
     writer: {
         type: String
     },
@@ -18,12 +15,27 @@ const PostSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    Data: {
+    data: {
         type: Array
-        
     },
     contents:{
         type: String,
+    },
+    nftId: {
+        type: String,
+    },
+    nftName:{
+        type: String
+    },
+    nftDescription: {
+        tyep: String
+    },
+    nftImageAddr: {
+        type: String
+    },
+    views: {
+        type: Number,
+        default: 0
     },
     seq: {
         type: Number

@@ -4,26 +4,29 @@ const key = require("../blockchain/login");
 
 // login 처리
 exports.login = async (req, res) => {
-  console.log(req.session);
-  const { userId, password } = req.body;
-  try {
-    const checkUserId = await UserModel.exists({ userId: userId });
-    const user = await UserModel.findOne({ userId: userId, password: password });
-    if (user) {
-      req.session.loggedIn = true;
-      req.session.userId = user.userId;
-      console.log(req.session);
-      return res.status(200).json({ msg: "Success login" });
-    } else if (!checkUserId) {
-      return res.status(400).json({ msg: "UserId is not exist" });
-    } else {
-      return res.status(400).json({ msg: "Password is not Correct" });
-    }
-  } catch (err) {
+
+    const { userId, password } = req.body;
+
+    try {
+        const checkUserId = await UserModel.exists({ userId: userId });
+        const user = await UserModel.findOne({userId: userId, password: password});        
+        if(user){
+            req.session.loggedIn = true;
+            req.session.userId = user.userId;
+            req.session.walletAddr = user.walletAddr;
+
+            return res.status(200).json({msg: "Success login"});
+        }else if (!checkUserId) {
+            return res.status(400).json({ msg: "UserId is not exist" });
+        }else{
+            return res.status(400).json({msg: "Password is not Correct"});
+        }
+    } catch (err) {
     // error 처리
-    console.log(err);
-    return res.status(400).json({ msg: "Post Error" });
-  }
+        console.log(err);
+        return res.status(400).json({msg: "Post Error"});
+    }
+
 };
 
 // singup 처리

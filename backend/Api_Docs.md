@@ -1,7 +1,6 @@
 # API Docs
 
 ## /user/signup (POST)
-
 Create new user
 
 - **Request**
@@ -21,6 +20,10 @@ Create new user
 {
   "msg": "UserId is already signup"
 }
+// userId 중복일 경우(400)
+{
+  "msg":  "UserId is already signup"
+}
 // userName 중복일 경우(400)
 {
   "msg":  "UserName is already signup"
@@ -32,7 +35,6 @@ Create new user
 ```
 
 ## /user/login (POST)
-
 Login user
 
 - **Request**
@@ -49,16 +51,37 @@ Login user
 ```json
 // 성공(200)
 {
-  "msg": "Success login",
+  "msg": "Success login"
 }
-// 실패(400)
+// userId 없을경우 (400)
 {
-  "msg": "UserName, password is not Correct"
+  "msg": "UserId is not exist"
+}
+// password 틀릴경우 (400)
+{
+  "msg": "Password is not Correct"
+}
+```
+
+## /user/mylist (GET)
+Fetch Logged in User data
+
+- **Response**
+
+```json
+// 성공(200)
+{
+  "msg": "ok",
+  "userData" : User Data,
+  "postData" : Post Data
+}
+// Error (400)
+{
+  "msg": Err
 }
 ```
 
 ## /user/logout (POST)
-
 Logout user
 
 - **Response**
@@ -66,14 +89,11 @@ Logout user
 ```json
 // 성공(200)
 {
-  "msg": "Success logout",
+  "msg": "Success logout"
 }
 ```
-
-
 ## /post (GET)
-
-Get Post List
+Fetch Post data list
 
 - **Response**
 
@@ -87,3 +107,61 @@ Get Post List
   "msg": err
 }
 ```
+
+## /post/save (POST)
+Post Save
+
+- **Request**
+
+```json
+{
+  "title": "Post 제목",
+  "nftName" : "nft 이름",
+  "nftImage": "Nft 사진",
+  "nftDescription": "nft 설명",
+  "data": "필요한 Data label",
+  "contents": "Post 내용",
+}
+```
+
+- **Response**
+
+```json
+// 성공(200)
+{
+  "msg": "Success Post save"
+}
+// TDT 부족 (400)
+{
+  "msg": "Not sufficient TDT"
+}
+// Err (400)
+{
+  "msg": Err
+}
+```
+
+## /post/fetch/{:seq} (GET)
+Get post by seq
+
+- **Response**
+
+```json
+// 성공(200)
+{
+  "data": Post
+}
+// Seq 오류 (400)
+{
+  "msg": "Seq is not valid"
+}
+// Err (400)
+{
+  "msg": Err
+}
+```
+
+
+
+
+

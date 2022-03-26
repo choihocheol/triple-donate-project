@@ -8,13 +8,13 @@ exports.login = async (req, res) => {
     const { userId, password } = req.body;
 
     try {
+
         const checkUserId = await UserModel.exists({ userId: userId });
         const user = await UserModel.findOne({userId: userId, password: password});        
+
         if(user){
             req.session.loggedIn = true;
             req.session.userId = user.userId;
-            req.session.walletAddr = user.walletAddr;
-
             return res.status(200).json({msg: "Success login"});
         }else if (!checkUserId) {
             return res.status(400).json({ msg: "UserId is not exist" });
@@ -72,6 +72,7 @@ exports.getMyData = async (req, res) => {
   }
 };
 
+// logout
 exports.logout = async (req, res) => {
   try {
     req.session.destroy();

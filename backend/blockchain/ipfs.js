@@ -6,7 +6,7 @@ module.exports = {
     const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
     const data = new FormData();
-    data.append('file', image);
+    data.append('file', image, { filepath: 'NFT image' });
 
     try {
       const res = await axios.post(url, data, {

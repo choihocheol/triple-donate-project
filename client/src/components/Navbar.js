@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink, NavIcon } from "./NavbarElements";
+import React, { useState } from "react";
+import { Nav, NavLink, Bars, NavMenu, NavIcon } from "./NavbarElements";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -36,10 +36,7 @@ const Navbar = () => {
         console.log(err);
       });
   };
-  const ExperienceLogout = () => {
-    dispatch(logoutUser({}, false));
-    history.push("/");
-  };
+
   const goToMypage = () => {
     history.push("/mypage");
   };
@@ -139,7 +136,8 @@ const Navbar = () => {
                 borderColor: "none",
               },
               "&:hover": {
-                backgroundColor: "none",
+                color: "#15cdfc",
+                backgroundColor: "#2c2c2c",
                 borderColor: "none",
                 boxShadow: "#e2e2e2",
               },

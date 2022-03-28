@@ -14,13 +14,12 @@ module.exports = {
         }),
         data: contract.methods.mint(userAddress, amount).encodeABI(),
       };
-      const transaction = caver.klay.sendTransaction(rawTx);
+      await caver.klay.sendTransaction(rawTx);
 
       const output = {
         userAddress: userAddress,
         balance: await contract.methods.balanceOf(userAddress).call(),
       };
-      await transaction;
       return output;
     } catch (err) {
       throw err;
@@ -46,16 +45,15 @@ module.exports = {
           rawTx,
           userAccount.privateKey,
         );
-      const transaction = caver.klay.sendTransaction({
+      await caver.klay.sendTransaction({
         senderRawTransaction: senderRawTransaction,
         feePayer: caver.klay.accounts.wallet[0].address,
       });
 
       const output = {
-        userAddress: userAddress,
-        balance: await contract.methods.balanceOf(userAddress).call(),
+        userAddress: userAccount.address,
+        balance: await contract.methods.balanceOf(userAccount.address).call(),
       };
-      await transaction;
       return output;
     } catch (err) {
       throw err;

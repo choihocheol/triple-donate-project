@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from "./NavbarElements";
+import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink, NavIcon } from "./NavbarElements";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -13,6 +13,7 @@ import { logoutUser } from "../reducers/loginReducer";
 import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
+  axios.defaults.withCredentials = true;
   const history = useHistory();
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
@@ -35,15 +36,19 @@ const Navbar = () => {
         console.log(err);
       });
   };
+  const ExperienceLogout = () => {
+    dispatch(logoutUser({}, false));
+    history.push("/");
+  };
   const goToMypage = () => {
     history.push("/mypage");
   };
   return (
     <>
       <Nav>
-        <NavLink to="/">
+        <NavIcon to="/">
           <img src={require("../assets/logo_white.png")} alt="logo" height="120px" width="200px" />
-        </NavLink>
+        </NavIcon>
         <Bars />
         <NavMenu>
           <NavLink to="/about">About</NavLink>

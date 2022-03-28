@@ -6,7 +6,7 @@ import IndexFourth from "../components/IndexFourth";
 import axios from "axios";
 import { logoutUser, setUser } from "../reducers/loginReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "@mui/material";
+
 axios.defaults.withCredentials = true;
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,21 +25,8 @@ export default function Home() {
       .catch((err) => console.log(err));
   }, []);
 
-  const logoutHandler = () => {
-    axios
-      .post("http://localhost:4999/user/logout")
-      .then((res) => {
-        dispatch(logoutUser({}, false));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <>
-      {/* <p>{data.login.isLogin ? data.login.name : "Not Login"}</p>
-      <Button onClick={logoutHandler}>LogOut</Button> */}
       <IndexFirst />
       <IndexSecond />
       <IndexThird />

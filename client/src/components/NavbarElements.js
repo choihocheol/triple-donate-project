@@ -17,11 +17,22 @@ export const NavLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
+  margin: 0 2rem;
   height: 100%;
   cursor: pointer;
   &.active {
-    color: #15cdfc;
+    /* color: #15cdfc; */
+    border-bottom: 1px solid #15cdfc;
   }
+`;
+export const NavIcon = styled(Link)`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
 `;
 
 export const Bars = styled(FaBars)`

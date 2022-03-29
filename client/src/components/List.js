@@ -30,9 +30,10 @@ const List = () => {
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
   const renderData = (posts) => {
+    console.log("posts", posts);
     return (
       <>
-        {posts.map((it) => {
+        {posts.data.map((it) => {
           return <DataList key={it.seq} {...it} />;
         })}
       </>
@@ -42,9 +43,16 @@ const List = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       setLoading(true);
-      // const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-      setPosts(dataList);
-      // console.log("res", res.data);
+      await axios
+        .get("https://localhost:4999/post")
+        // .get("https://jsonplaceholder.typicode.com/posts")
+        .then((res) => {
+          console.log(res);
+          setPosts(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       setLoading(false);
     };
     fetchPosts();

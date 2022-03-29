@@ -56,8 +56,12 @@ const View = () => {
                     </span>
                   </div>
                   <p className="board__description">
+                    <div className="board__description--content">
+                      NFT Name : {data.name}
+                    </div>
+                    <br />
                     <span className="board__description--content">
-                      이 NFT는 데이터 기부에 대한 증서입니다.
+                      {data.description}
                     </span>
                   </p>
                   <div className="board__description">
@@ -100,7 +104,7 @@ const View = () => {
               </Grid>
               <Grid item>
                 <div className="board__view--wrap">
-                  <div className="board__view--title">{data.title}</div>
+                  <span className="board__view--title">{data.title}</span>
                   <div className="board__view--writer">
                     Owned by {data.writer}
                   </div>

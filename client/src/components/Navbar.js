@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from "./NavbarElements";
+import {
+  Nav,
+  NavLink,
+  Bars,
+  NavMenu,
+  NavBtn,
+  NavBtnLink,
+} from "./NavbarElements";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -42,7 +49,12 @@ const Navbar = () => {
     <>
       <Nav>
         <NavLink to="/">
-          <img src={require("../assets/logo_white.png")} alt="logo" height="120px" width="200px" />
+          <img
+            src={require("../assets/logo_white.png")}
+            alt="logo"
+            height="100px"
+            width="170px"
+          />
         </NavLink>
         <Bars />
         <NavMenu>
@@ -68,7 +80,9 @@ const Navbar = () => {
                 aria-expanded={open ? "true" : undefined}
               >
                 <Avatar sx={{ width: 32, height: 32, mr: 2 }} />
-                <Typography sx={{ fontWeight: 600 }}>{data.login.name}</Typography>
+                <Typography sx={{ fontWeight: 600 }}>
+                  {data.login.name}
+                </Typography>
                 <MoreVertIcon color="white" sx={{ ml: 1 }} />
               </Button>
             </>

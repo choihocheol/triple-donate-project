@@ -126,13 +126,15 @@ function App() {
 
   const dataId = useRef(1);
 
-  const onCreate = (title, writer, content, label, type) => {
+  const onCreate = (name, description, title, content, label, type) => {
     dispatch({
       type: "CREATE",
       data: {
         seq: dataId.current,
+        name,
+        description,
         title,
-        writer,
+        // writer,
         content,
         createdAt: new Date().getTime(),
         label,

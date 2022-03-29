@@ -153,9 +153,6 @@ function App() {
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/home" exact>
-              <Home />
-            </Route>
             <Route path="/post">
               <Post />
             </Route>
@@ -165,7 +162,6 @@ function App() {
             <Route path="/write">
               <Write />
             </Route>
-            <Route path="/profile">Profile</Route>
             <Route path="/login">
               <Login />
             </Route>

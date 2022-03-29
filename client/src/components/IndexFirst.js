@@ -105,9 +105,9 @@ export default function IndexFirst() {
                 <BtnFont>시작하기</BtnFont>
               </Button>
             </Link>
-            <Link href="/post" underline="none">
+            <Link href="/about" underline="none">
               <Button sx={{ ml: 5 }} size="large" variant="outlined">
-                <BtnFont>둘러보기</BtnFont>
+                <BtnFont>더 알아보기</BtnFont>
               </Button>
             </Link>
           </BtnContainer>

@@ -126,19 +126,27 @@ function App() {
 
   const dataId = useRef(1);
 
-  const onCreate = (name, description, title, content, label, type) => {
+  const onCreate = (
+    nftName,
+    nftDescription,
+    title,
+    contents,
+    { label, type },
+    views
+  ) => {
     dispatch({
       type: "CREATE",
       data: {
         seq: dataId.current,
-        name,
-        description,
+        nftName,
+        nftDescription,
         title,
         // writer,
-        content,
+        contents,
         createdAt: new Date().getTime(),
         label,
         type,
+        views,
       },
     });
     dataId.current += 1;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 
-const DataList = ({ seq, title, writer, createdAt }) => {
+const DataList = ({ seq, title, writer, createdAt, views }) => {
   const history = useHistory();
 
   const goView = () => {
@@ -20,7 +20,7 @@ const DataList = ({ seq, title, writer, createdAt }) => {
           <div className="board__list--date">
             {new Date(createdAt).toLocaleDateString()}
           </div>
-          <div className="board__list--date">33</div>
+          <div className="board__list--date">{views}</div>
         </div>
       </div>
     </div>

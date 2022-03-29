@@ -7,29 +7,50 @@ import Grid from "@mui/material/Grid";
 import { FaList } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
 import Dataheader from "./Dataheader";
+import axios from "axios";
 
-const View = () => {
+const View = ({ posts }) => {
   const history = useHistory();
 
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const { seq } = useParams();
 
   const dataList = useContext(PostStateContext);
+  console.log("posts", posts);
+
+  // useEffect(() => {
+  //   if (dataList.length >= 1) {
+  //     const targetData = dataList.find(
+  //       (it) => parseInt(it.seq) === parseInt(seq)
+  //     );
+  //     if (targetData) {
+  //       setData(targetData);
+  //     } else {
+  //       // alert("없는 게시글입니다.");
+  //       history.goBack();
+  //     }
+  //   }
+  // }, [seq, dataList]);
 
   useEffect(() => {
-    if (dataList.length >= 1) {
-      const targetData = dataList.find(
-        (it) => parseInt(it.seq) === parseInt(seq)
-      );
-      if (targetData) {
-        setData(targetData);
-      } else {
-        // alert("없는 게시글입니다.");
-        history.goBack();
-      }
-    }
-  }, [seq, dataList]);
+    const fetchPosts = async () => {
+      setLoading(true);
+      await axios
+        .get(`http://localhost:4999/post/fetch/${seq}`)
+        .then((res) => {
+          console.log(res);
+          setData(res.data.data);
+          console.log("hi", res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      setLoading(false);
+    };
+    fetchPosts();
+  }, []);
 
   if (!data) {
     return <div>로딩중입니다...</div>;
@@ -57,11 +78,11 @@ const View = () => {
                   </div>
                   <p className="board__description">
                     <div className="board__description--content">
-                      NFT Name : {data.name}
+                      NFT Name : {data.nftName}
                     </div>
                     <br />
                     <span className="board__description--content">
-                      {data.description}
+                      {data.nftDescription}
                     </span>
                   </p>
                   <div className="board__description">
@@ -115,7 +136,7 @@ const View = () => {
                     </dl>
                     <dl>
                       <dt>조회</dt>
-                      <dd>33</dd>
+                      <dd>{data.views}</dd>
                     </dl>
                     <div className="board__view--flex">
                       <dl>
@@ -134,7 +155,7 @@ const View = () => {
                       </dl>
                     </div>
                   </div>
-                  <div className="board__view--cont">{data.content}</div>
+                  <div className="board__view--cont">{data.contents}</div>
                 </div>
               </Grid>
             </Grid>

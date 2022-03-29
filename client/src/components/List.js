@@ -8,7 +8,7 @@ import Dataheader from "./Dataheader";
 import Pagination from "react-js-pagination";
 
 const List = () => {
-  const dataList = useContext(PostStateContext);
+  // const dataList = useContext(PostStateContext);
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +33,7 @@ const List = () => {
     console.log("posts", posts);
     return (
       <>
-        {posts.data.map((it) => {
+        {posts.map((it) => {
           return <DataList key={it.seq} {...it} />;
         })}
       </>
@@ -44,11 +44,11 @@ const List = () => {
     const fetchPosts = async () => {
       setLoading(true);
       await axios
-        .get("https://localhost:4999/post")
+        .get("http://localhost:4999/post")
         // .get("https://jsonplaceholder.typicode.com/posts")
         .then((res) => {
           console.log(res);
-          setPosts(res.data);
+          setPosts(res.data.data);
         })
         .catch((err) => {
           console.log(err);

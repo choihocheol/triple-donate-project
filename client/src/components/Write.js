@@ -3,7 +3,7 @@ import "../App.css";
 import fileImg from "../assets/create-insert-file.jpg";
 import { useHistory } from "react-router-dom";
 import { CreateStateContext } from "../App";
-import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@mui/material/IconButton";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import Dataheader from "./Dataheader";
@@ -35,9 +35,9 @@ const Write = () => {
 
   const [state, setState] = useState({
     title: "",
-    content: "",
-    name: "",
-    description: "",
+    contents: "",
+    nftName: "",
+    nftDescription: "",
     // writer: "",
     // password: "",
   });
@@ -53,13 +53,13 @@ const Write = () => {
     if (state.title.length < 1) {
       titleInput.current.focus();
       return;
-    } else if (state.content.length < 1) {
+    } else if (state.contents.length < 1) {
       contentInput.current.focus();
       return;
-    } else if (state.name.length < 1) {
+    } else if (state.nftName.length < 1) {
       nameInput.current.focus();
       return;
-    } else if (state.description.length < 1) {
+    } else if (state.nftDescription.length < 1) {
       descriptionInput.current.focus();
       return;
 
@@ -78,41 +78,41 @@ const Write = () => {
     }
 
     onCreate(
-      state.name,
-      state.description,
+      state.nftName,
+      state.nftDescription,
       state.title,
       // state.writer,
-      state.content,
-      // inputFields
+      state.contents,
+      // inputFields,
       inputFields[0].label,
       inputFields[0].type
       // inputFields[1].label,
       // inputFields[1].type
     );
 
-    const { name, description, title, content } = state;
+    const { nftName, nftDescription, title, contents } = state;
     const post = await axios.post("http://localhost:4999/post/save", {
-      name,
-      description,
+      nftName,
+      nftDescription,
       title,
-      content,
+      contents,
     });
 
     setState({
-      name: "",
-      description: "",
+      nftName: "",
+      nftDescription: "",
       title: "",
-      content: "",
+      contents: "",
     });
     console.log("post", post);
 
     history.push("/post");
     console.log(
-      state.name,
-      state.description,
+      state.nftName,
+      state.nftDescription,
       state.title,
       // state.writer,
-      state.content,
+      state.contents,
       inputFields
       // inputFields[0].label,
       // inputFields[0].type
@@ -188,8 +188,8 @@ const Write = () => {
               <input
                 className="board__NFT--name"
                 ref={nameInput}
-                name="name"
-                value={state.name}
+                name="nftName"
+                value={state.nftName}
                 type="text"
                 placeholder="이름 입력"
                 onChange={handleChangeState}
@@ -200,8 +200,8 @@ const Write = () => {
               <textarea
                 className="board__NFT--description"
                 ref={descriptionInput}
-                name="description"
-                value={state.description}
+                name="nftDescription"
+                value={state.nftDescription}
                 placeholder="NFT 설명"
                 onChange={handleChangeState}
               ></textarea>
@@ -300,9 +300,9 @@ const Write = () => {
           <div className="board__write--cont">
             <textarea
               ref={contentInput}
-              name="content"
+              name="contents"
               placeholder="내용 입력"
-              value={state.content}
+              value={state.contents}
               onChange={handleChangeState}
             ></textarea>
           </div>

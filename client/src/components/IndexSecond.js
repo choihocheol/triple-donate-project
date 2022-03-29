@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import styled from "styled-components";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -13,11 +12,7 @@ const item = {
   alignItems: "center",
   px: 5,
 };
-const BtnFont = styled.div`
-margin-bottom:0.3px
-  font-size: 22px;
-  font-weight: 400;
-`;
+
 export default function IndexSecond() {
   useEffect(() => {
     AOS.init({

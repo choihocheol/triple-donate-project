@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Box from "@mui/material/Box";
 import styled from "styled-components";
 import { Avatar, Button } from "@mui/material";
 import AOS from "aos";
@@ -9,7 +8,7 @@ import Link from "@mui/material/Link";
 
 const Container = styled.div`
   width: 100%;
-  height: 850px;
+  height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +21,7 @@ const MainContainer = styled.div`
   backgroundcolor: black;
 `;
 const LeftContainer = styled.div`
-  width: 45%;
+  width: 55%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -37,10 +36,10 @@ const BtnContainer = styled.div`
   justify-content: flex-start;
 `;
 const RightContainer = styled.div`
-  width: 55%;
+  width: 45%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 const LogoContent = styled.div`
   width: 40vh;
@@ -94,12 +93,14 @@ export default function IndexFirst() {
       <MainContainer>
         <LeftContainer>
           <ContentContainer>
-            <MainContentFont>당신의 데이터를 의미있는 프로젝트에 사용하세요!</MainContentFont>
+            <MainContentFont>
+              당신의 데이터를 의미있는 <MainContentFont>프로젝트에 사용하세요!</MainContentFont>
+            </MainContentFont>
             <ContentFont>많은 의미있는 프로젝트에서</ContentFont>
             <ContentFont>당신의 소중한 데이터를 필요로 합니다</ContentFont>
           </ContentContainer>
           <BtnContainer>
-            <Link href="/login" underline="none">
+            <Link href="/signup" underline="none">
               <Button size="large" variant="contained">
                 <BtnFont>시작하기</BtnFont>
               </Button>

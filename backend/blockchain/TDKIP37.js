@@ -19,12 +19,12 @@ module.exports = {
         }),
         data: contract.methods.create(url).encodeABI(),
       };
-      const transaction = caver.klay.sendTransaction(rawTx);
+      await caver.klay.sendTransaction(rawTx);
 
       const output = {
         nftId: await id,
+        imageURL: imageURL,
       };
-      await transaction;
       return output;
     } catch (err) {
       throw err;
@@ -43,9 +43,7 @@ module.exports = {
         }),
         data: contract.methods.mint(nftId, recipientAddress).encodeABI(),
       };
-      const transaction = caver.klay.sendTransaction(rawTx);
-
-      await transaction;
+      await caver.klay.sendTransaction(rawTx);
     } catch (err) {
       throw err;
     }

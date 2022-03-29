@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // User mmodel
 const UserSchema = new mongoose.Schema({
@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     },
     balance:{
         type: Number,
-        default: 0
+        default: 500
     },
     walletAddr: {
         type: String
@@ -31,5 +31,4 @@ const UserSchema = new mongoose.Schema({
     
 });
 
-
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model("Users", UserSchema);

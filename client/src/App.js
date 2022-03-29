@@ -11,6 +11,8 @@ import Post from "./views/Post";
 import Mypage from "./views/Mypage";
 import Signup from "./views/Signup";
 import Nft from "./components/Nft";
+import Swap from "./views/Swap";
+import About from "./views/About";
 
 // const dummyData = [
 //   {
@@ -170,8 +172,14 @@ function App() {
             <Route path="/signup">
               <Signup />
             </Route>
-            <Route path="/nft">
+            {/* <Route path="/nft">
               <Nft />
+            </Route> */}
+            <Route path="/swap">
+              <Swap />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/mypage">
               <Mypage />

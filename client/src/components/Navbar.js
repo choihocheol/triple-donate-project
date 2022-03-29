@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Nav,
   NavLink,
@@ -7,8 +7,44 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./NavbarElements";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Logout from "@mui/icons-material/Logout";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import PersonIcon from "@mui/icons-material/Person";
+import LoginIcon from "@mui/icons-material/Login";
+import { useDispatch, useSelector } from "react-redux";
+import Avatar from "@mui/material/Avatar";
+import { Button, Menu, MenuItem, Typography } from "@mui/material";
+import axios from "axios";
+import { logoutUser } from "../reducers/loginReducer";
+import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const logoutHandler = () => {
+    axios
+      .post("http://localhost:4999/user/logout")
+      .then((res) => {
+        dispatch(logoutUser({}, false));
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const goToMypage = () => {
+    history.push("/mypage");
+  };
   return (
     <>
       <Nav>
@@ -22,12 +58,108 @@ const Navbar = () => {
         </NavLink>
         <Bars />
         <NavMenu>
-          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/swap">Swap</NavLink>
           <NavLink to="/post">Post</NavLink>
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/login">Sign In</NavBtnLink>
-        </NavBtn>
+
+        {data.login.isLogin ? (
+          <>
+            <>
+              <Button
+                onClick={handleClick}
+                size="small"
+                sx={{
+                  ml: 2,
+                  mr: 15,
+                  color: "#e2e2e2",
+                  textTransform: "none",
+                }}
+                // aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+              >
+                <Avatar sx={{ width: 32, height: 32, mr: 2 }} />
+                <Typography sx={{ fontWeight: 600 }}>
+                  {data.login.name}
+                </Typography>
+                <MoreVertIcon color="white" sx={{ ml: 1 }} />
+              </Button>
+            </>
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              onClick={handleClose}
+              PaperProps={{
+                elevation: 0,
+                sx: {
+                  overflow: "visible",
+                  filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                  mt: 1.5,
+                  "& .MuiAvatar-root": {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  "&:before": {
+                    content: '""',
+                    display: "block",
+                    position: "absolute",
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: "background.paper",
+                    transform: "translateY(-50%) rotate(45deg)",
+                    zIndex: 0,
+                  },
+                },
+              }}
+              transformOrigin={{ horizontal: "right", vertical: "top" }}
+              anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+            >
+              <MenuItem onClick={goToMypage}>
+                <ListItemIcon>
+                  <PersonIcon fontSize="small" />
+                </ListItemIcon>{" "}
+                마이페이지
+              </MenuItem>
+              {/* <Divider /> */}
+              <MenuItem onClick={logoutHandler}>
+                <ListItemIcon>
+                  <Logout fontSize="small" />
+                </ListItemIcon>
+                로그아웃
+              </MenuItem>
+            </Menu>
+          </>
+        ) : (
+          <Button
+            sx={{
+              color: "#e2e2e2",
+              mr: 15,
+              backgroundColor: "none",
+              borderColor: "#e2e2e2",
+              "&:active": {
+                boxShadow: "#e2e2e2",
+                backgroundColor: "none",
+                borderColor: "none",
+              },
+              "&:hover": {
+                backgroundColor: "none",
+                borderColor: "none",
+                boxShadow: "#e2e2e2",
+              },
+            }}
+            size="large"
+            href="/login"
+            startIcon={<LoginIcon />}
+          >
+            로그인
+          </Button>
+        )}
       </Nav>
     </>
   );

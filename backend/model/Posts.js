@@ -30,7 +30,7 @@ const PostSchema = new mongoose.Schema({
     nftDescription: {
         tyep: String
     },
-    nftImageAddr: {
+    nftImageIpfsAddr: {
         type: String
     },
     views: {

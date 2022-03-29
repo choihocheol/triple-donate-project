@@ -6,7 +6,7 @@ module.exports = {
     const url = `https://api.pinata.cloud/pinning/pinFileToIPFS`;
 
     const data = new FormData();
-    data.append('file', image);
+    data.append('file', image, { filepath: 'NFT Image' });
 
     try {
       const res = await axios.post(url, data, {
@@ -25,9 +25,14 @@ module.exports = {
   pinJSONToIPFS: async (name, description, imageURL) => {
     const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
     const jsonBody = {
-      name: name,
-      description: description,
-      imageURL: imageURL,
+      pinataMetadata: {
+        name: 'NFT Metadata',
+      },
+      pinataContent: {
+        name: name,
+        description: description,
+        imageURL: imageURL,
+      },
     };
 
     try {

@@ -20,6 +20,10 @@ export const NavLink = styled(Link)`
   margin: 0 2rem;
   height: 100%;
   cursor: pointer;
+  &:hover {
+    color: #15cdfc;
+    text-decoration: none;
+  }
   &.active {
     /* color: #15cdfc; */
     border-bottom: 1px solid #15cdfc;

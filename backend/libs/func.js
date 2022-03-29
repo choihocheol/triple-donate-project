@@ -23,5 +23,4 @@ exports.isTDT = async (userId, amount) => {
     }else{
         return false
     } 
-
 };

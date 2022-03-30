@@ -22,7 +22,7 @@ module.exports = {
       };
       return output;
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   },
   burnTDT: async (userPrivateKey, amount) => {
@@ -56,7 +56,7 @@ module.exports = {
       };
       return output;
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   },
 };

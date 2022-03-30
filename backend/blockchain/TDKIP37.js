@@ -27,7 +27,7 @@ module.exports = {
       };
       return output;
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   },
   mintNFT: async (nftId, recipientAddress) => {
@@ -45,7 +45,7 @@ module.exports = {
       };
       await caver.klay.sendTransaction(rawTx);
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   },
 };

@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     },
     balance:{
         type: Number,
-        default: 10
+        default: 0
     },
     walletAddr: {
         type: String

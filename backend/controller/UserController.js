@@ -1,6 +1,7 @@
 const UserModel = require("../model/Users");
 const PostModel = require("../model/Posts");
 const key = require("../blockchain/login");
+const func = require("../libs/func");
 
 // login 처리
 exports.login = async (req, res) => {
@@ -59,14 +60,17 @@ exports.signup = async (req, res) => {
 
 // getUserData By username?seq?
 exports.getMyData = async (req, res) => {
+  const userId = req.session.userId;  
   try {
-    if (!req.session.userId) {
+    if (!userId) {
       res.status(404).json({ msg: "Not Authorized" });
     } else {
-      const userData = await UserModel.findOne({ userId: req.session.userId });
-      const postData = await PostModel.find({ writer: req.session.userId });
-      return res.status(200).json({ msg: "ok", userData: userData, postData: postData });
-    }
+      const userData = await UserModel.findOne({ userId: userId });
+      const postData = await PostModel.find({ writer: userId });
+      const nftData = await func.fetchNftDataByNftId(userData.nftList)
+
+      return res.status(200).json({ msg: "ok", userData: userData, postData: postData, nftData: nftData });
+    } 
   } catch (err) {
     return res.status(400).json({ msg: { err } });
   }

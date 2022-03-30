@@ -42,10 +42,12 @@ const PostSchema = new mongoose.Schema({
   },
 });
 
+
 PostSchema.plugin(autoIncrement.plugin, {
   model: "Posts",
   field: "seq",
   startAt: 1,
   increment: 1,
 });
+
 module.exports = mongoose.model("Posts", PostSchema);

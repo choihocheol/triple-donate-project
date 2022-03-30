@@ -7,9 +7,7 @@ import { useSelector } from "react-redux";
 
 const Container = styled.div`
   position: inherit;
-  /* height: 1500px; */
   width: 100%;
-  /* background-color: #e5e8eb; */
   display: flex;
   align-items: center;
   justify-content: center;

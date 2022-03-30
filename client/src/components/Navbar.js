@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
-import {
-  Nav,
-  NavLink,
-  Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
-} from "./NavbarElements";
+
+
+import React, { useState } from "react";
+import { Nav, NavLink, Bars, NavMenu, NavIcon } from "./NavbarElements";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Logout from "@mui/icons-material/Logout";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -20,6 +15,7 @@ import { logoutUser } from "../reducers/loginReducer";
 import { useHistory } from "react-router-dom";
 
 const Navbar = () => {
+  axios.defaults.withCredentials = true;
   const history = useHistory();
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
@@ -42,20 +38,17 @@ const Navbar = () => {
         console.log(err);
       });
   };
+
   const goToMypage = () => {
     history.push("/mypage");
   };
   return (
     <>
       <Nav>
-        <NavLink to="/">
-          <img
-            src={require("../assets/logo_white.png")}
-            alt="logo"
-            height="100px"
-            width="170px"
-          />
-        </NavLink>
+
+        <NavIcon to="/">
+          <img src={require("../assets/logo_white.png")} alt="logo" height="120px" width="200px" />
+        </NavIcon>
         <Bars />
         <NavMenu>
           <NavLink to="/about">About</NavLink>
@@ -148,7 +141,8 @@ const Navbar = () => {
                 borderColor: "none",
               },
               "&:hover": {
-                backgroundColor: "none",
+                color: "#15cdfc",
+                backgroundColor: "#2c2c2c",
                 borderColor: "none",
                 boxShadow: "#e2e2e2",
               },

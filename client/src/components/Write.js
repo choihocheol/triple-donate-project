@@ -68,7 +68,8 @@ const Write = () => {
     formData.append("nftName", state.nftName);
     formData.append("nftImage", file);
     formData.append("nftDescription", state.nftDescription);
-    formData.append("data", [inputFields]);
+    formData.append("data", JSON.stringify(inputFields));
+    console.log("inputFields", inputFields);
     formData.append("contents", state.contents);
 
     const post = await axios.post("http://localhost:4999/post/save", formData);

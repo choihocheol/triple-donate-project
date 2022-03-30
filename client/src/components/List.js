@@ -41,9 +41,7 @@ const List = () => {
     const fetchPosts = async () => {
       setLoading(true);
       await axios
-
         .get("http://localhost:4999/post/")
-        // .get("https://jsonplaceholder.typicode.com/posts")
         .then((res) => {
           console.log(res.data.data[0]);
           setPosts(res.data.data);

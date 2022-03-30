@@ -1,4 +1,5 @@
 const UserModel = require("../model/Users");
+const NftModel = require("../model/NFTs");
 const TDT = require("../blockchain/TDKIP7");
 
 // TDT Update
@@ -24,3 +25,15 @@ exports.isTDT = async (userId, amount) => {
         return false
     } 
 };
+
+exports.fetchNftDataByNftId = async (nftList) => {
+    const data = []
+    for(let el of nftList){
+        let nft = await NftModel.findOne({nftId: el})
+        data.push({nftId: nft.nftId, nftName: nft.nftName, nftDescription: nft.nftDescription, nftImageIpfsAddr: nft.nftImageIpfsAddr})
+    }
+    return data;
+}
+
+
+

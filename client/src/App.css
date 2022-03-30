@@ -461,7 +461,8 @@ a {
   border-bottom: 1px solid #000;
   line-height: 160%;
   font-size: 1rem;
-  height: 450px;
+  height: 380px;
+  max-height: 380px;
 }
 
 @media (max-width: 1000px) {

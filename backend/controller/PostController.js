@@ -22,11 +22,8 @@ exports.savePost = async (req, res) => {
   const { title, nftName, nftDescription, data, contents } = req.body;
   const userId = req.session.userId;
   const nftImage = req.file;
-  
-  // test
-  // const _isTDT = func.isTDT(userId, -10);
-  const _isTDT = true;
-  
+  const _isTDT = func.isTDT(userId, -10);
+    
   try {
     if (!_isTDT) {
       return res.status(400).json({ msg: "Not sufficient TDT" });
@@ -56,7 +53,7 @@ exports.savePost = async (req, res) => {
       });
 
       //burn TDT
-      // func.updateTDT(userId, -10);
+      func.updateTDT(userId, -10);
 
       // Save Post
       await newPost.save();
@@ -92,6 +89,7 @@ exports.getPostFindBySeq = async (req, res) => {
 
 exports.upload = async (req,res) => {
   const {nftId} = req.body
+  const userId = req.session.userId
   try{
     const user = await UserModel.findOne({userId: req.session.userId});
 
@@ -99,8 +97,11 @@ exports.upload = async (req,res) => {
     await NFT.mintNFT(nftId, user.walletAddr)
 
     // update user nft list
-    await UserModel.updateMany({userId: nftId}, {$addToSet: {"nftList": nftId}});
-    
+    await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": nftId}});
+
+    // mint TDT +2
+    func.updateTDT(userId, 2)
+
     return res.status(200).json({msg: "Success Upload"})
   } catch(err){
     console.log(err)

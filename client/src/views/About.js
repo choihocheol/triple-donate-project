@@ -8,14 +8,35 @@ import AboutSecond from "../components/AboutSecond";
 import AboutThird from "../components/AboutThird";
 import AboutFourth from "../components/AboutFourth";
 import styled from "styled-components";
-
+import LogoSrc from "../assets/logo_black.png";
 const Container = styled.div`
   width: 100%;
-  height: 95vh;
+  height: 100%;
   display: flex;
+  position: relative;
+  z-index: 1;
   justify-content: center;
-  align-items: center;
+  &::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: url(${LogoSrc});
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.1;
+  }
 `;
+// const Container = styled.div`
+//   width: 100%;
+//   height: 95vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,7 +74,7 @@ export default function About() {
         flexGrow: 1,
         bgcolor: "background.paper",
         display: "flex",
-        height: "95vh",
+        height: 1400,
       }}
     >
       <Tabs orientation="vertical" value={value} onChange={handleChange} aria-label="Vertical tabs example" sx={{ borderRight: 1, borderColor: "divider", pt: 8 }}>
@@ -77,7 +98,7 @@ export default function About() {
         <Tab sx={{ padding: "50px 70px", fontWeight: 600, fontSize: "18px", textTransform: "none", borderBottom: "0.5px solid rgba(0,0,0,0.3)" }} label="NFT" {...pannelProps(2)} />
         <Tab
           sx={{ padding: "50px 70px", fontWeight: 600, fontSize: "18px", textTransform: "none", borderBottom: "0.5px solid rgba(0,0,0,0.3)" }}
-          label="제작자"
+          label="About Us"
           {...pannelProps(3)}
         />
       </Tabs>

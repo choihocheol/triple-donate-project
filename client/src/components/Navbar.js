@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { Nav, NavLink, Bars, NavMenu, NavIcon } from "./NavbarElements";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -13,8 +11,11 @@ import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import axios from "axios";
 import { logoutUser } from "../reducers/loginReducer";
 import { useHistory } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const Navbar = () => {
+  const [removeCookie] = useCookies(["connect.sid"]);
+
   axios.defaults.withCredentials = true;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -45,7 +46,6 @@ const Navbar = () => {
   return (
     <>
       <Nav>
-
         <NavIcon to="/">
           <img src={require("../assets/logo_white.png")} alt="logo" height="120px" width="200px" />
         </NavIcon>
@@ -73,9 +73,7 @@ const Navbar = () => {
                 aria-expanded={open ? "true" : undefined}
               >
                 <Avatar sx={{ width: 32, height: 32, mr: 2 }} />
-                <Typography sx={{ fontWeight: 600 }}>
-                  {data.login.name}
-                </Typography>
+                <Typography sx={{ fontWeight: 600 }}>{data.login.name}</Typography>
                 <MoreVertIcon color="white" sx={{ ml: 1 }} />
               </Button>
             </>

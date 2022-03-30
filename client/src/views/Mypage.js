@@ -1,5 +1,5 @@
 import { Avatar, Divider, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Nft from "../components/Nft";
 import axios from "axios";
@@ -147,7 +147,18 @@ const DescFont = styled.div`
 `;
 
 export default function Mypage() {
+  const [user, setUser] = useState({});
   const userInfo = useSelector((state) => state);
+  console.log(user.userData.userName);
+  useEffect(() => {
+    axios
+      .get("http://localhost:4999/user/mylist")
+      .then((res) => {
+        // console.log(res.data.userData.balance);
+        setUser(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <Container>
@@ -161,7 +172,7 @@ export default function Mypage() {
 
               {/* <Divider /> */}
               <InfoContainer>
-                <UserNameFont>{userInfo.login.name}</UserNameFont>
+                <UserNameFont>{user.userData.userName}</UserNameFont>
                 <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
                   <InfoContent>
                     <TitleFont> 프로젝트</TitleFont>
@@ -169,14 +180,14 @@ export default function Mypage() {
                   </InfoContent>
                   <InfoContent>
                     <TitleFont>기여한 프로젝트</TitleFont>
-                    <DescFont>2</DescFont>
+                    <DescFont>6</DescFont>
                   </InfoContent>
                 </InfoContents>
                 <InfoContents>
                   <InfoContent>
                     <TitleFont>TDT</TitleFont>
                     <DescFont>
-                      {userInfo.balacne === 0 ? "0" : userInfo.balance}
+                      {user.userData.balance === 0 ? "0" : user.userData.balance}
                       <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="share" src="http://temp20.zsol.co.kr/icon_img/share01.svg" />
                     </DescFont>
                   </InfoContent>

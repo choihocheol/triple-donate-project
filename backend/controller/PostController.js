@@ -1,7 +1,6 @@
 const PostModel = require("../model/Posts");
 const UserModel = require("../model/Users");
 const NFTModel = require("../model/NFTs");
-const TDT = require("../blockchain/TDKIP7");
 const NFT = require("../blockchain/TDKIP37");
 const func = require("../libs/func");
 
@@ -9,7 +8,7 @@ const func = require("../libs/func");
 exports.getPostList = async (req, res) => {
   try {
     // postData 전처리
-    const postData = await PostModel.find().exec();
+    const postData = await PostModel.find().sort({seq:-1}).exec();
 
     return res.status(200).json({ data: postData });
   } catch (err) {
@@ -27,7 +26,7 @@ exports.savePost = async (req, res) => {
   // test
   // const _isTDT = func.isTDT(userId, -10);
   const _isTDT = true;
-
+  
   try {
     if (!_isTDT) {
       return res.status(400).json({ msg: "Not sufficient TDT" });
@@ -90,3 +89,22 @@ exports.getPostFindBySeq = async (req, res) => {
     return res.status(400).json({ msg: err });
   }
 };
+
+exports.upload = async (req,res) => {
+  const {nftId} = req.body
+  try{
+    const user = await UserModel.findOne({userId: req.session.userId});
+
+    // NFT minting
+    await NFT.mintNFT(nftId, user.walletAddr)
+
+    // update user nft list
+    await UserModel.updateMany({userId: nftId}, {$addToSet: {"nftList": nftId}});
+    
+    return res.status(200).json({msg: "Success Upload"})
+  } catch(err){
+    console.log(err)
+    return res.status(400).json({msg: err})
+    
+  }
+}

@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { PostStateContext } from "../App";
 import "../App.css";
 import axios from "axios";
 import DataList from "./DataList";
@@ -8,8 +7,6 @@ import Dataheader from "./Dataheader";
 import Pagination from "react-js-pagination";
 
 const List = () => {
-  // const dataList = useContext(PostStateContext);
-
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setcurrentPage] = useState(1);
@@ -45,7 +42,6 @@ const List = () => {
       setLoading(true);
       await axios
         .get("http://localhost:4999/post")
-        // .get("https://jsonplaceholder.typicode.com/posts")
         .then((res) => {
           console.log(res);
           setPosts(res.data.data);

@@ -47,7 +47,11 @@ const View = () => {
     formData.append("label", file.label);
     formData.append("donationData", file.data);
 
-    // const post = await axios.post("http://", formData);
+    const upload = await axios.post(
+      "http://localhost:4999/post/upload",
+      formData
+    );
+    console.log("uploadData", upload);
     alert("데이터가 기부되었습니다!");
   };
 
@@ -187,7 +191,12 @@ const View = () => {
             <Link to="/post" className="board__btn--on">
               목록
             </Link>
-            <Link to="/write" className="board__btn--off">
+            <Link
+              className="board__btn--off"
+              onClick={() => {
+                alert("준비중입니다!");
+              }}
+            >
               수정
             </Link>
           </div>

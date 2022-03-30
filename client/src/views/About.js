@@ -53,7 +53,7 @@ export default function About() {
         flexGrow: 1,
         bgcolor: "background.paper",
         display: "flex",
-        height: "95vh",
+        height: 1400,
       }}
     >
       <Tabs orientation="vertical" value={value} onChange={handleChange} aria-label="Vertical tabs example" sx={{ borderRight: 1, borderColor: "divider", pt: 8 }}>
@@ -77,7 +77,7 @@ export default function About() {
         <Tab sx={{ padding: "50px 70px", fontWeight: 600, fontSize: "18px", textTransform: "none", borderBottom: "0.5px solid rgba(0,0,0,0.3)" }} label="NFT" {...pannelProps(2)} />
         <Tab
           sx={{ padding: "50px 70px", fontWeight: 600, fontSize: "18px", textTransform: "none", borderBottom: "0.5px solid rgba(0,0,0,0.3)" }}
-          label="제작자"
+          label="About Us"
           {...pannelProps(3)}
         />
       </Tabs>

@@ -14,15 +14,11 @@ const Write = () => {
   const contentInput = useRef();
   const nameInput = useRef();
   const descriptionInput = useRef();
-  // const writerInput = useRef();
-  // const passwordInput = useRef();
   const labelInput = useRef();
   const typeInput = useRef();
   const fileUploader = useRef();
 
   const history = useHistory();
-
-  const { onCreate } = useContext(CreateStateContext);
 
   const [file, setFile] = useState();
   const [inputFields, setInputFields] = useState([{ label: "", type: "" }]);
@@ -38,8 +34,6 @@ const Write = () => {
     contents: "",
     nftName: "",
     nftDescription: "",
-    // writer: "",
-    // password: "",
   });
 
   const handleChangeState = (e) => {
@@ -62,13 +56,6 @@ const Write = () => {
     } else if (state.nftDescription.length < 1) {
       descriptionInput.current.focus();
       return;
-
-      // } else if (state.writer.length < 1) {
-      //   writerInput.current.focus();
-      //   return;
-      // } else if (state.password.length < 1) {
-      //   passwordInput.current.focus();
-      //   return;
     } else if (inputFields[0].label.length < 1) {
       labelInput.current.focus();
       return;
@@ -77,25 +64,23 @@ const Write = () => {
       return;
     }
 
-    onCreate(
-      state.nftName,
-      state.nftDescription,
-      state.title,
-      // state.writer,
-      state.contents,
-      // inputFields,
-      inputFields[0].label,
-      inputFields[0].type
-      // inputFields[1].label,
-      // inputFields[1].type
-    );
-
     const { nftName, nftDescription, title, contents } = state;
     const post = await axios.post("http://localhost:4999/post/save", {
       nftName,
       nftDescription,
       title,
       contents,
+      data: [inputFields],
+      // data: [
+      //   {
+      //     label: inputFields[0].label,
+      //     type: inputFields[0].type,
+      //   },
+      //   {
+      //     label: inputFields[1].label,
+      //     type: inputFields[1].type,
+      //   },
+      // ],
     });
 
     setState({
@@ -104,6 +89,8 @@ const Write = () => {
       title: "",
       contents: "",
     });
+
+    setInputFields([inputFields]);
     console.log("post", post);
 
     history.push("/post");
@@ -111,13 +98,8 @@ const Write = () => {
       state.nftName,
       state.nftDescription,
       state.title,
-      // state.writer,
       state.contents,
       inputFields
-      // inputFields[0].label,
-      // inputFields[0].type
-      // inputFields[1].label,
-      // inputFields[1].type
     );
     alert("작성 성공하셨습니다.");
   };
@@ -155,36 +137,22 @@ const Write = () => {
           Image, Audio
           <sup className="board__create--sup-red">*</sup>
         </div>
-        <div className="board__create--item-data-form">
-          File types supported: JPG, PNG, GIF, SVG, MP3, MP4. Max size: 100 MB
-        </div>
+        <div className="board__create--item-data-form">File types supported: JPG, PNG, GIF, SVG, MP3, MP4. Max size: 100 MB</div>
         <div className="board__NFT--container">
           <div className="board__create--input-box">
-            <div
-              className="board__create--input-box-file"
-              onClick={handleClick}
-            >
+            <div className="board__create--input-box-file" onClick={handleClick}>
               <img
                 src={file ? URL.createObjectURL(file) : fileImg}
                 alt="no img"
-                className={
-                  file
-                    ? "board__create--input-box-file-img-change"
-                    : "board__create--input-box-file-img"
-                }
+                className={file ? "board__create--input-box-file-img-change" : "board__create--input-box-file-img"}
               />
-              <input
-                type="file"
-                ref={fileUploader}
-                onChange={handleChange}
-                accept="image/*, audio/*, video/*"
-                style={{ display: "none" }}
-              />
+              <input type="file" ref={fileUploader} onChange={handleChange} accept="image/*, audio/*, video/*" style={{ display: "none" }} />
             </div>
           </div>
           <dl className="board__write--NFTname">
             <dt>NFT Name</dt>
             <dd>
+
               <input
                 className="board__NFT--name"
                 ref={nameInput}
@@ -194,6 +162,7 @@ const Write = () => {
                 placeholder="이름 입력"
                 onChange={handleChangeState}
               ></input>
+
             </dd>
             <dt>NFT Description</dt>
             <dd>
@@ -215,44 +184,11 @@ const Write = () => {
             <dl>
               <dt>제목</dt>
               <dd>
-                <input
-                  ref={titleInput}
-                  name="title"
-                  value={state.title}
-                  type="text"
-                  placeholder="제목 입력"
-                  onChange={handleChangeState}
-                ></input>
+                <input ref={titleInput} name="title" value={state.title} type="text" placeholder="제목 입력" onChange={handleChangeState}></input>
               </dd>
             </dl>
           </div>
           <div className="board__write--info">
-            {/* <dl>
-              <dt>글쓴이</dt>
-              <dd>
-                <input
-                  ref={writerInput}
-                  type="text"
-                  name="writer"
-                  vlaue={state.writer}
-                  placeholder="글쓴이 입력"
-                  onChange={handleChangeState}
-                ></input>
-              </dd>
-            </dl> */}
-            {/* <dl>
-              <dt>비밀번호</dt>
-              <dd>
-                <input
-                  ref={passwordInput}
-                  type="password"
-                  name="password"
-                  value={state.password}
-                  placeholder="비밀번호 입력"
-                  onChange={handleChangeState}
-                ></input>
-              </dd>
-            </dl> */}
             <div className="board__write--img">
               {inputFields.map((inputField, index) => (
                 <div key={index}>
@@ -272,13 +208,7 @@ const Write = () => {
                   <dl>
                     <dt>파일 종류</dt>
                     <dd>
-                      <select
-                        ref={typeInput}
-                        className="board__file"
-                        value={inputField.type}
-                        name="type"
-                        onChange={(event) => handleChangeInput(index, event)}
-                      >
+                      <select ref={typeInput} className="board__file" value={inputField.type} name="type" onChange={(event) => handleChangeInput(index, event)}>
                         <option value="">-- 파일 선택 --</option>
                         <option value="Image">이미지</option>
                         <option value="Audio">오디오</option>
@@ -305,20 +235,14 @@ const Write = () => {
               value={state.contents}
               onChange={handleChangeState}
             ></textarea>
+
           </div>
         </div>
         <div className="board__btn--container">
-          <button
-            type="submit"
-            onClick={handleSubmit}
-            className="board__btn--on"
-          >
+          <button type="submit" onClick={handleSubmit} className="board__btn--on">
             등록
           </button>
-          <button
-            className="board__btn--off"
-            onClick={() => history.push("/post")}
-          >
+          <button className="board__btn--off" onClick={() => history.push("/post")}>
             취소
           </button>
         </div>

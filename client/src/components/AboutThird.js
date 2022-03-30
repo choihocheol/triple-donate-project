@@ -34,7 +34,9 @@ export default function AboutThird() {
           <ContentText>
             데이터를 기부하는 사람은 프로젝트에서 발급한 NFT를 받을 수 있습니다.
             <br />
-            자신이 기부한 데이터를 이용하는 프로젝트의 NFT는 더 나은 사회를 위한 사회에 기여하였다는 작은 증명서로써 참여자들의 데이터에 대한 작은 보상으로 지급됩니다.
+            자신이 기부한 데이터를 이용하는 프로젝트의 NFT는
+            <br /> 더 나은 사회를 위한 프로젝트에 기여하였다는 작은 증명서로써 참여자들의 데이터에 대한
+            <br /> 작은 보상으로 지급됩니다.
           </ContentText>
         </ContentContainer>
       </MainContainer>

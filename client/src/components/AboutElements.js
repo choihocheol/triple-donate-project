@@ -1,32 +1,13 @@
 import styled from "styled-components";
-import LogoSrc from "../assets/logo_black.png";
+
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Avatar, IconButton } from "@mui/material";
 export const Container = styled.div`
-font family:Verdana, Arial, Tahoma, Serif;
   width: 100%;
-  height: 95vh;
+  height: 100%;
   display: flex;
-
-  position: relative;
-  z-index: 1;
-
   justify-content: center;
-  &::after {
-    width: 100%;
-    height: 100%;
-    content: "";
-    background: url(${LogoSrc});
-    background-repeat: no-repeat;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    opacity: 0.1;
-  }
 `;
-
 export const MainContainer = styled.div`
   width: 90%;
   margin-top: 30px;

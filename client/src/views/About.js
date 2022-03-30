@@ -8,14 +8,35 @@ import AboutSecond from "../components/AboutSecond";
 import AboutThird from "../components/AboutThird";
 import AboutFourth from "../components/AboutFourth";
 import styled from "styled-components";
-
+import LogoSrc from "../assets/logo_black.png";
 const Container = styled.div`
   width: 100%;
-  height: 95vh;
+  height: 100%;
   display: flex;
+  position: relative;
+  z-index: 1;
   justify-content: center;
-  align-items: center;
+  &::after {
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: url(${LogoSrc});
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.1;
+  }
 `;
+// const Container = styled.div`
+//   width: 100%;
+//   height: 95vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

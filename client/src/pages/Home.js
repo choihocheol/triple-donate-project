@@ -18,9 +18,6 @@ export default function Home() {
       .then((res) => {
         dispatch(setUser(res.data.userData.userName, true));
       })
-      // .then(() => {
-      //   console.log(data.login.name);
-      // })
 
       .catch((err) => console.log(err));
   }, []);

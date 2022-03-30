@@ -50,7 +50,12 @@ exports.signup = async (req, res) => {
         walletAddr: key.generateKeyring().address,
         privateKey: key.generateKeyring().privateKey,
       });
+      // User data save
       await User.save();
+
+      //mint TDT
+      func.updateTDT(userId, 10);
+
       return res.status(200).json({ msg: "Success signup" });
     }
   } catch (err) {

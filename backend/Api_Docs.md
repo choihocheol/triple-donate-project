@@ -73,7 +73,8 @@ Fetch Logged in User data
 {
   "msg": "ok",
   "userData" : User Data,
-  "postData" : Post Data
+  "postData" : Post Data,
+  "nftData" : Nft Data
 }
 // Error (400)
 {

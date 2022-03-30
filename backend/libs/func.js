@@ -11,7 +11,7 @@ exports.updateTDT = async (userId, amount) => {
     if(amount >= 0){
         await TDT.mintTDT(walletAddr, amount);
     }else{
-        await TDT.burnTDT(privateKey, amount)
+        await TDT.burnTDT(privateKey, -amount)
     } 
     await UserModel.findOneAndUpdate({userId: userId}, {$inc: {balance : amount}});
 };

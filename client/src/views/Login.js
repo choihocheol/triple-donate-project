@@ -10,7 +10,6 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
 import { setUser } from "../reducers/loginReducer";
 import { useDispatch } from "react-redux";
 const theme = createTheme();

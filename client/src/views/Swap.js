@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 
@@ -18,7 +19,9 @@ const ContentContainer = styled.div`
 export default function Swap() {
   return (
     <Container>
-      <ContentContainer>Swap 페이지는 준비중입니다.</ContentContainer>
+      <ContentContainer>
+        <Typography sx={{ fontSize: "28px", fontWeight: 600 }}>Swap 페이지는 준비중입니다.</Typography>
+      </ContentContainer>
     </Container>
   );
 }

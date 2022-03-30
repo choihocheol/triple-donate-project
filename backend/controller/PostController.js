@@ -23,7 +23,10 @@ exports.savePost = async (req, res) => {
   const { title, nftName, nftDescription, data, contents } = req.body;
   const userId = req.session.userId;
   const nftImage = req.file;
-  const _isTDT = func.isTDT(userId, -10);
+  
+  // test
+  // const _isTDT = func.isTDT(userId, -10);
+  const _isTDT = true;
 
   try {
     if (!_isTDT) {
@@ -54,7 +57,7 @@ exports.savePost = async (req, res) => {
       });
 
       //burn TDT
-      func.updateTDT(userId, -10);
+      // func.updateTDT(userId, -10);
 
       // Save Post
       await newPost.save();

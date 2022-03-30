@@ -20,7 +20,7 @@ const Write = () => {
 
   const history = useHistory();
 
-  const [file, setFile] = useState();
+  const [file, setfile] = useState();
   const [inputFields, setInputFields] = useState([{ label: "", type: "" }]);
 
   const handleChangeInput = (index, event) => {
@@ -64,34 +64,35 @@ const Write = () => {
       return;
     }
 
-    const { nftName, nftDescription, title, contents } = state;
-    const post = await axios.post("http://localhost:4999/post/save", {
-      nftName,
-      nftDescription,
-      title,
-      contents,
-      data: [inputFields],
-      // data: [
-      //   {
-      //     label: inputFields[0].label,
-      //     type: inputFields[0].type,
-      //   },
-      //   {
-      //     label: inputFields[1].label,
-      //     type: inputFields[1].type,
-      //   },
-      // ],
-    });
+    const formData = new FormData();
+    formData.append("title", state.title);
+    formData.append("nftName", state.nftName);
+    formData.append("nftImage", file);
+    formData.append("nftDescription", state.nftDescription);
+    formData.append("inputFields", inputFields);
+    formData.append("contents", state.contents);
 
-    setState({
-      nftName: "",
-      nftDescription: "",
-      title: "",
-      contents: "",
-    });
-
-    setInputFields([inputFields]);
+    const post = await axios.post("http://localhost:4999/post/save", formData);
     console.log("post", post);
+
+    // const { nftName, nftDescription, title, contents } = state;
+    // const post = await axios.post("http://localhost:4999/post/save", {
+    //   nftName,
+    //   nftDescription,
+    //   title,
+    //   contents,
+    //   data: [inputFields],
+    // });
+
+    // setState({
+    //   nftName: "",
+    //   nftDescription: "",
+    //   title: "",
+    //   contents: "",
+    // });
+
+    // setInputFields([inputFields]);
+    // console.log("post", post);
 
     history.push("/post");
     console.log(
@@ -120,7 +121,7 @@ const Write = () => {
     if (e.target.files[0].size > maxSize) {
       alert("첨부파일 사이즈는 100MB 이내로 등록 가능합니다.");
     } else {
-      setFile(e.target.files[0]);
+      setfile(e.target.files[0]);
     }
   };
 

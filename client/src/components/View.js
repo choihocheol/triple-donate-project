@@ -120,25 +120,26 @@ const View = ({ posts }) => {
                       <dt>조회</dt>
                       <dd>{data.views}</dd>
                     </dl>
-                    <div className="board__view--flex">
-                      {data.data.map((e, idx) => {
-                        return <h1 key={idx}>test</h1>;
-                      })}
-                      <dl>
-                        <dt>라벨</dt>
-                        <dd>{data.data.label}</dd>
-                      </dl>
-                      <dl>
-                        <dt>파일 종류</dt>
-                        <dd>{data.data.type}</dd>
-                      </dl>
-                      <dl>
-                        <span>첨부파일</span>
-                        <dd>
-                          <input type="file" />
-                        </dd>
-                      </dl>
-                    </div>
+                    {data.data[0].map((e, idx) => {
+                      return (
+                        <div className="board__view--flex" key={idx}>
+                          <dl>
+                            <dt>라벨</dt>
+                            <dd>{e.label}</dd>
+                          </dl>
+                          <dl>
+                            <dt>파일 종류</dt>
+                            <dd>{e.type}</dd>
+                          </dl>
+                          <dl>
+                            <span>첨부파일</span>
+                            <dd>
+                              <input type="file" />
+                            </dd>
+                          </dl>
+                        </div>
+                      );
+                    })}
                   </div>
                   <div className="board__view--cont">{data.contents}</div>
                 </div>

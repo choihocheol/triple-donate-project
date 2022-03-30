@@ -1,32 +1,42 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
-import { PostStateContext } from "../App";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import "../App.css";
 import certificate from "../assets/Certificate.jpg";
 import Grid from "@mui/material/Grid";
 import { FaList } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
 import Dataheader from "./Dataheader";
+import axios from "axios";
+
 
 const View = () => {
   const history = useHistory();
   const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const { seq } = useParams();
-  console.log(seq);
-  const dataList = useContext(PostStateContext);
+
+
+  console.log("posts", posts);
 
   useEffect(() => {
-    if (dataList.length >= 1) {
-      const targetData = dataList.find((it) => parseInt(it.seq) === parseInt(seq));
-      if (targetData) {
-        setData(targetData);
-      } else {
-        // alert("없는 게시글입니다.");
-        history.goBack();
-      }
-    }
-  }, [seq, dataList]);
+    const fetchPosts = async () => {
+      setLoading(true);
+      await axios
+        .get(`http://localhost:4999/post/fetch/${seq}`)
+        .then((res) => {
+          console.log(res);
+          setData(res.data.data);
+          console.log("res.data.data", res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      setLoading(false);
+    };
+    fetchPosts();
+  }, []);
+
 
   if (!data) {
     return <div>로딩중입니다...</div>;
@@ -47,9 +57,14 @@ const View = () => {
                     </span>
                   </div>
                   <p className="board__description">
-                    <div className="board__description--content">NFT Name : {data.name}</div>
+                    <div className="board__description--content">
+                      NFT Name : {data.nftName}
+                    </div>
                     <br />
-                    <span className="board__description--content">{data.description}</span>
+                    <span className="board__description--content">
+                      {data.nftDescription}
+                    </span>
+
                   </p>
                   <div className="board__description">
                     <span className="board__description--title">
@@ -94,16 +109,19 @@ const View = () => {
                     </dl>
                     <dl>
                       <dt>조회</dt>
-                      <dd>33</dd>
+                      <dd>{data.views}</dd>
                     </dl>
                     <div className="board__view--flex">
+                      {data.data.map((e, idx) => {
+                        return <h1 key={idx}>test</h1>;
+                      })}
                       <dl>
                         <dt>라벨</dt>
-                        <dd>{data.label}</dd>
+                        <dd>{data.data.label}</dd>
                       </dl>
                       <dl>
                         <dt>파일 종류</dt>
-                        <dd>{data.type}</dd>
+                        <dd>{data.data.type}</dd>
                       </dl>
                       <dl>
                         <span>첨부파일</span>
@@ -113,7 +131,7 @@ const View = () => {
                       </dl>
                     </div>
                   </div>
-                  <div className="board__view--cont">{data.content}</div>
+                  <div className="board__view--cont">{data.contents}</div>
                 </div>
               </Grid>
             </Grid>

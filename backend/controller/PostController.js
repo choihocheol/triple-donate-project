@@ -1,5 +1,7 @@
 const PostModel = require("../model/Posts");
 const UserModel = require("../model/Users");
+const NFTModel = require("../model/NFTs");
+
 const TDT = require("../blockchain/TDKIP7");
 const NFT = require("../blockchain/TDKIP37");
 
@@ -21,28 +23,47 @@ exports.getPostList = async (req, res) => {
 exports.savePost = async (req, res) => {
   const { title, nftName, nftDescription, nftImage, data, contents } = req.body;
   try {
-    //nftID
-    // const { nftId } = await NFT.createNFT(nftName, nftDescription, nftImage);
-    const newPost = new PostModel({
-      title: title,
-      // 수정
-      // writer: "req.session.userId",
-      writer: "test",
-      data: data,
-      contents: contents,
-      // nftId: nftId,
-      nftName: nftName,
-      nftDescription: nftDescription,
-      //nftImageAddr: ipfs.image 주소??
-    });
+    if (!_isTDT) {
+      return res.status(400).json({ msg: "Not sufficient TDT" });
+    } else {
+      const { nftId, imageURL } = await NFT.createNFT(
+        nftName,
+        nftDescription,
+        nftImage.buffer
+      );
 
-    await newPost.save();
-    // privateKey 찾는거??
-    // const userPriavteKey = await UserModel.findOne({userId: req.session.userId});
-    // const {balance} =  await TDT.burnTDT(userPriavteKey, 10);
-    // userbalance update 해야댐
+      const newPost = new PostModel({
+        title: title,
+        writer: userId,
+        data: data,
+        contents: contents,
+        nftId: nftId,
+        nftName: nftName,
+        nftDescription: nftDescription,
+        nftImageIpfsAddr: imageURL,
+      });
 
-    return res.status(200).json({ msg: "Success Post save" });
+      const newNft = new NFTModel({
+        nftId: nftId,
+        nftName: nftName,
+        nftDescription: nftDescription,
+        nftImageIpfsAddr: imageURL
+      });
+
+      //burn TDT
+      func.updateTDT(userId, -10);
+
+      // Save Post
+      await newPost.save();
+
+      // Save Nft
+      await newNft.save();
+
+      // update user nftlist
+      await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": nftId}});
+      return res.status(200).json({ msg: "Success Post save" });
+    }
+
   } catch (err) {
     console.log(err);
     return res.status(400).json({ msg: "err" });

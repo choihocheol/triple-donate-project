@@ -37,6 +37,7 @@ exports.signup = async (req, res) => {
   try {
     const checkUserId = await UserModel.exists({ userId: userId });
     const checkUserName = await UserModel.exists({ userName: userName });
+    const { address, privateKey } = key.generateKeyring();
 
     if (checkUserId) {
       return res.status(400).json({ msg: "UserId is already signup" });
@@ -47,8 +48,8 @@ exports.signup = async (req, res) => {
         userId: userId,
         userName: userName,
         password: password,
-        walletAddr: key.generateKeyring().address,
-        privateKey: key.generateKeyring().privateKey,
+        walletAddr: address,
+        privateKey: privateKey,
       });
       // User data save
       await User.save();

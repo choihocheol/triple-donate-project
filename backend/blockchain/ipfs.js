@@ -19,7 +19,7 @@ module.exports = {
       });
       return `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`;
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   },
   pinJSONToIPFS: async (name, description, imageURL) => {
@@ -44,7 +44,7 @@ module.exports = {
       });
       return `https://gateway.pinata.cloud/ipfs/${res.data.IpfsHash}`;
     } catch (err) {
-      throw err;
+      console.error(err);
     }
   },
 };

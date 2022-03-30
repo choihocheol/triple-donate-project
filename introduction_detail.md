@@ -34,6 +34,4 @@ Triple Donate는 말 그대로 **decentralization, data, donate**
 
 데이터 기반의 연구를 하는 기관, 단체, 학생들은 triple donate를 통해 양질의 데이터를 얻고
 
-데이터를 기부하는 유저는 triple donate를 통해 자신의 어떤 개인 데이터가 어떤 곳에서 사용되는지 정확히 알 수 있으며
-
-플랫폼의 token economy를 통해 의미있는 활동이 가능합니다.
+데이터를 기부하는 유저는 triple donate를 통해 자신의 어떤 개인 데이터가 어떤 곳에서 사용되는지 정확히 알 수 있습니다.

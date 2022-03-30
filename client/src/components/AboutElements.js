@@ -40,6 +40,6 @@ export const SubContainer = styled.div`
   margin: 20px 20px;
 `;
 export const ContentContainer = styled.div`
-  width: 100%;
+  width: 70%;
   margin: 10px 40px;
 `;

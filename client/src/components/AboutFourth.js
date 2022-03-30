@@ -47,42 +47,14 @@ export default function AboutFourth() {
         <Divider />
         <SubContainer>
           <UsContainer>
-            <Us
-              name="최호철"
-              role="Blockchain"
-              blogAddr="https://velog.io/@tls980824"
-              toDo="aaaaaaaa"
-              githubAddr="
-https://github.com/djshinnn"
-            />
-            <Us
-              name="최호철"
-              role="Blockchain"
-              blogAddr="https://velog.io/@tls980824"
-              toDo="aaaaaaaa"
-              githubAddr="
-https://github.com/djshinnn"
-            />
+            <Us name="최호철" role="Blockchain" blogAddr="https://velog.io/@choihocheol" toDo="aaaaaaaa" githubAddr="https://github.com/choihocheol" />
+            <Us name="최호철" role="Blockchain" blogAddr="https://velog.io/@choihocheol" toDo="aaaaaaaa" githubAddr="https://github.com/choihocheol" />
           </UsContainer>
         </SubContainer>
         <SubContainer>
           <UsContainer>
-            <Us
-              name="최호철"
-              role="Blockchain"
-              blogAddr="https://velog.io/@tls980824"
-              toDo="aaaaaaaa"
-              githubAddr="
-https://github.com/djshinnn"
-            />
-            <Us
-              name="최호철"
-              role="Blockchain"
-              blogAddr="https://velog.io/@tls980824"
-              toDo="aaaaaaaa"
-              githubAddr="
-https://github.com/djshinnn"
-            />
+            <Us name="최호철" role="Blockchain" blogAddr="https://velog.io/@choihocheol" toDo="aaaaaaaa" githubAddr="https://github.com/choihocheol" />
+            <Us name="최호철" role="Blockchain" blogAddr="https://velog.io/@choihocheol" toDo="aaaaaaaa" githubAddr="https://github.com/choihocheol" />
           </UsContainer>
         </SubContainer>
       </MainContainer>

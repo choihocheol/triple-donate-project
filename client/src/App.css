@@ -409,8 +409,12 @@ a {
 
 .board__view--writer {
   margin: 20px 0 20px 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: rgb(119, 119, 119);
+}
+
+.board__view--writer > span {
+  color: #2081e2;
 }
 
 .board__view--info {
@@ -497,8 +501,12 @@ a {
   font-size: 0;
 }
 
-.board__write--img {
+.board__write--type {
   margin-top: 10px;
+}
+
+.board__label {
+  width: 17rem;
 }
 
 .board__file {

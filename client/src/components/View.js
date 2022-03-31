@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../App.css";
-import certificate from "../assets/Certificate.jpg";
 import Grid from "@mui/material/Grid";
 import { FaList } from "react-icons/fa";
 import { FaRegListAlt } from "react-icons/fa";
@@ -101,7 +100,7 @@ const View = () => {
                         Contract Address
                       </span>
                       <Link
-                        style={{ color: "royalblue" }}
+                        style={{ color: "#2081E2" }}
                         className="board__details--right"
                         onClick={() =>
                           window.open(
@@ -141,7 +140,7 @@ const View = () => {
                 <div className="board__view--wrap">
                   <span className="board__view--title">{data.title}</span>
                   <div className="board__view--writer">
-                    Owned by {data.writer}
+                    Owned by <span>{data.writer}</span>
                   </div>
                   <div className="board__view--info">
                     <dl>

@@ -140,51 +140,76 @@ const View = () => {
                 <div className="board__view--wrap">
                   <span className="board__view--title">{data.title}</span>
                   <div className="board__view--writer">
-                    Owned by <span>{data.writer}</span>
+                    Writer by <span>{data.writer}</span>
                   </div>
                   <div className="board__view--info">
-                    <dl>
-                      <dt>작성일</dt>
-                      <dd>{new Date(data.createdAt).toLocaleDateString()}</dd>
-                    </dl>
-                    <dl>
-                      <dt>조회</dt>
-                      <dd>{data.views}</dd>
-                    </dl>
-                    {JSON.parse(data.data[0]).map((e, idx) => {
-                      return (
-                        <div className="board__view--flex" key={idx}>
-                          <dl>
-                            <dt>라벨</dt>
-                            <dd>{e.label}</dd>
-                          </dl>
-                          <dl>
-                            <dt>파일 종류</dt>
-                            <dd>{e.type}</dd>
-                          </dl>
-                          <dl>
-                            <span>첨부파일</span>
-                            <dd>
-                              <input
-                                type="file"
-                                name="file"
-                                vlaue={file}
-                                label={e.label}
-                                onChange={handleChange}
-                              />
-                            </dd>
-                          </dl>
-                        </div>
-                      );
-                    })}
-                    <Link className="board__btn--off" onClick={handleSubmit}>
-                      데이터 기부하기
-                    </Link>
+                    <div className="board__view--info-cont">
+                      <dl>
+                        <dt>작성일</dt>
+                        <dd>{new Date(data.createdAt).toLocaleDateString()}</dd>
+                      </dl>
+                      <dl>
+                        <dt>조회</dt>
+                        <dd>{data.views}</dd>
+                      </dl>
+                      <dl>
+                        <p className="board__view--info-comment">
+                          3Donate는 데이터 기부에 대한 감사의 의미로 해당 NFT를
+                          기여해줍니다. <br />
+                          여러분이 데이터의 주체가 되길 바라며, 많은 성원
+                          부탁드립니다.
+                        </p>
+                      </dl>
+                    </div>
                   </div>
                   <div className="board__view--cont">{data.contents}</div>
                 </div>
               </Grid>
             </Grid>
+          </div>
+          <div className="board__donate--info">
+            <h3 className="board__donate--title">Data donate from here!</h3>
+            <h6 style={{ color: "#f7786b", marginBottom: "20px" }}>
+              * 타입에 맞는 파일을 선택 해주세요! *
+            </h6>
+            {JSON.parse(data.data[0]).map((e, idx) => {
+              return (
+                <div className="board__view--flex" key={idx}>
+                  <dl>
+                    <dt>라벨</dt>
+                    <dd>{e.label}</dd>
+                  </dl>
+                  <dl>
+                    <dt>파일 종류</dt>
+                    <dd>{e.type}</dd>
+                  </dl>
+                  <dl>
+                    <span>첨부파일</span>
+                    <dd>
+                      <input
+                        type="file"
+                        name="file"
+                        vlaue={file}
+                        label={e.label}
+                        onChange={handleChange}
+                      />
+                    </dd>
+                  </dl>
+                </div>
+              );
+            })}
+          </div>
+          <div>
+            <div className="board__donate--comments-info">
+              <h6 style={{ marginLeft: "5px" }}>댓글 쓰기</h6>
+              <textarea
+                className="board__donate--comments"
+                placeholder="댓글 입력"
+              ></textarea>
+              <button className="board__btn--donate" onClick={handleSubmit}>
+                데이터 기부하기
+              </button>
+            </div>
           </div>
           <div className="board__btn--container">
             <Link to="/post" className="board__btn--on">

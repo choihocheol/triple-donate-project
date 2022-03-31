@@ -47,8 +47,8 @@ const LogoContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); */
 `;
 const ContentContainer = styled.div`
   width: 75%;
@@ -113,7 +113,9 @@ export default function IndexFirst() {
           </BtnContainer>
         </LeftContainer>
         <RightContainer>
-          <img src={require("../assets/signboard.png")} data-aos="zoom-out-left" style={{ margin: "-20%" }} width="130%" />
+          <LogoContent data-aos="fade-left">
+            <img alt="logo" src="signboard.png" />
+          </LogoContent>
         </RightContainer>
         <div class="arrow arrow-first"></div>
         <div class="arrow arrow-second"></div>

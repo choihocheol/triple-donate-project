@@ -70,18 +70,18 @@ const TitleFont = styled.div`
   font-size: 16px;
 `;
 
-export default function Nft() {
+export default function Nft({ title, desc, img }) {
   return (
     <div>
       <TokenContainer>
-        <Image src="/logo.png" alt="logo" />
+        <Image src={img} alt="logo" />
         <Divider />
         <BottonContainer>
           <Desc>
             <User>
               <UserText>
-                <TitleFont>프로젝트 이름</TitleFont>
-                <DescFont>프로젝트 설명이 들어갈 자리입니다</DescFont>
+                <TitleFont>{title}</TitleFont>
+                <DescFont>{desc}</DescFont>
               </UserText>
             </User>
           </Desc>

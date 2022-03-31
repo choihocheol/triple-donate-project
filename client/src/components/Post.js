@@ -9,6 +9,7 @@ import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import { IconButton, Snackbar } from "@mui/material";
 import Link from "@mui/material/Link";
 import styled from "styled-components";
+import axios from "axios";
 export const Container = styled.div`
   margin-left: 30px;
   width: 100%;
@@ -19,22 +20,33 @@ export const Container = styled.div`
 `;
 
 export default function AlignItemsList({ title, desc, imgAddr, seq }) {
-  const [state, setState] = useState({
-    open: false,
-    vertical: "top",
-    horizontal: "center",
-  });
-  const { vertical, horizontal, open } = state;
+  // axios({
+  //   url: `http://localhost:4999/post/download/${seq}`,
+  //   method: "GET",
+  //   responseType: "blob",
+  // }).then((response) => {
+  //   const url = window.URL.createObjectURL(new Blob([response.data]));
+  //   const link = document.createElement("a");
+  //   link.href = url;
+  //   link.setAttribute("download", "file.pdf"); //or any other extension
+  //   document.body.appendChild(link);
+  //   link.click();
+  // });
 
-  const handleClick = (newState) => () => {
-    setState({ open: true, ...newState });
-  };
-
-  const handleClose = () => {
-    setState({ ...state, open: false });
-  };
   const clickDownload = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    axios({
+      url: `http://localhost:4999/post/download/${seq}`,
+      method: "GET",
+      responseType: "blob",
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "file.zip");
+      document.body.appendChild(link);
+      link.click();
+    });
   };
   return (
     <Container>
@@ -55,18 +67,9 @@ export default function AlignItemsList({ title, desc, imgAddr, seq }) {
           />
         </ListItem>
       </Link>
-      <IconButton
-        onClick={handleClick({
-          vertical: "top",
-          horizontal: "center",
-        })}
-        sx={{ alignSelf: "center" }}
-        color="primary"
-        aria-label="download"
-      >
+      <IconButton sx={{ alignSelf: "center" }} color="primary" aria-label="download" onClick={clickDownload}>
         <ArrowCircleDownIcon />
       </IconButton>{" "}
-      <Snackbar anchorOrigin={{ vertical, horizontal }} open={open} onClose={handleClose} message="다운로드기능은 준비중입니다." key={vertical + horizontal} />
       {/* </ListItem> */}
       <Divider />
     </Container>

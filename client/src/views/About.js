@@ -70,12 +70,21 @@ export default function About() {
 
   return (
     <Box
-      sx={{
-        flexGrow: 1,
-        bgcolor: "background.paper",
-        display: "flex",
-        height: 1400,
-      }}
+      sx={
+        value === 3
+          ? {
+              flexGrow: 1,
+              bgcolor: "background.paper",
+              display: "flex",
+              height: 2300,
+            }
+          : {
+              flexGrow: 1,
+              bgcolor: "background.paper",
+              display: "flex",
+              height: 1000,
+            }
+      }
     >
       <Tabs orientation="vertical" value={value} onChange={handleChange} aria-label="Vertical tabs example" sx={{ borderRight: 1, borderColor: "divider", pt: 8 }}>
         <Tab

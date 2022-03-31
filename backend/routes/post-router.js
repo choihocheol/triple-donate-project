@@ -40,6 +40,7 @@ router.get("/fetch/:seq", PostController.getPostFindBySeq);
 // upload data
 router.post("/upload", donationData.single('donationData'), PostController.upload);
 
-
+// Download
+router.get("/download/:seq", PostController.download);
 
 module.exports = router;

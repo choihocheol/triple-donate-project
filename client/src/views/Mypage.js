@@ -151,21 +151,21 @@ const DescFont = styled.div`
 export default function Mypage() {
   const [user, setUser] = useState({});
   const [open, setOpen] = useState(true);
-  const userInfo = useSelector((state) => state);
-  // console.log(user.userData.userName);
+  const [myProject, setMyProject] = useState([]);
+  const [contribute, setContribute] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:4999/user/mylist")
       .then((res) => {
-        console.log(res);
+        setMyProject(res.data.userData.nftList.filter((e) => e[1] === 1));
+        setContribute(res.data.userData.nftList.filter((e) => e[1] === 0));
         setUser(res.data);
+        console.log(res.data);
         setOpen(false);
       })
       .catch((err) => console.log(err));
   }, []);
-
-  {
-  }
 
   return (
     <Container>
@@ -187,12 +187,12 @@ export default function Mypage() {
                     <UserNameFont>{user.userData.userName}</UserNameFont>
                     <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
                       <InfoContent>
-                        <TitleFont> 프로젝트</TitleFont>
-                        <DescFont>3</DescFont>
+                        <TitleFont>나의 프로젝트</TitleFont>
+                        <DescFont>{myProject.length} </DescFont>
                       </InfoContent>
                       <InfoContent>
                         <TitleFont>기여한 프로젝트</TitleFont>
-                        <DescFont>6</DescFont>
+                        <DescFont>{contribute.length}</DescFont>
                       </InfoContent>
                     </InfoContents>
                     <InfoContents>
@@ -206,7 +206,8 @@ export default function Mypage() {
                       <InfoContent>
                         <TitleFont>NFT</TitleFont>
                         <DescFont>
-                          5 <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="trophy" src="http://temp20.zsol.co.kr/icon_img/trophy.svg" />
+                          {user.nftData.length === 0 ? "0" : user.nftData.length}{" "}
+                          <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="trophy" src="http://temp20.zsol.co.kr/icon_img/trophy.svg" />
                         </DescFont>
                       </InfoContent>
                     </InfoContents>
@@ -216,10 +217,10 @@ export default function Mypage() {
               <PostContainer>
                 <ContentFont>나의 프로젝트</ContentFont>
                 <Divider />
-                <List sx={{ width: "100%", maxWidth: 500, mt: 2 }}>
+                <List sx={{ width: "100%", minWidth: 500, mt: 2 }}>
                   {user.postData ? (
                     user.postData.map((e) => {
-                      return <Post title={e.title} desc={e.nftDescription} />;
+                      return <Post id={e.seq} seq={e.seq} title={e.title} desc={e.nftDescription} imgAddr={e.nftImageIpfsAddr} />;
                     })
                   ) : (
                     <div style={{ padding: "130px 0" }}>

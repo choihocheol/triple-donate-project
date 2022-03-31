@@ -16,10 +16,11 @@ export default function Home() {
     axios
       .get("http://localhost:4999/user/mylist")
       .then((res) => {
+        console.log(res);
         dispatch(setUser(res.data.userData.userName, true));
       })
 
-      .catch((err) => console.log(err));
+      .catch((resposne) => console.log(resposne));
   }, []);
 
   return (

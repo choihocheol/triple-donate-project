@@ -20,6 +20,7 @@ const Write = () => {
   const history = useHistory();
 
   const [file, setfile] = useState();
+  const [isLoading, setLoading] = useState(false);
   const [inputFields, setInputFields] = useState([{ label: "", type: "" }]);
 
   const handleChangeInput = (index, event) => {
@@ -63,6 +64,8 @@ const Write = () => {
       return;
     }
 
+    setLoading(true);
+
     const formData = new FormData();
     formData.append("title", state.title);
     formData.append("nftName", state.nftName);
@@ -72,27 +75,12 @@ const Write = () => {
     console.log("inputFields", inputFields);
     formData.append("contents", state.contents);
 
-    const post = await axios.post("http://localhost:4999/post/save", formData);
+    const post = await axios
+      .post("http://localhost:4999/post/save", formData)
+      .then(() => {
+        setLoading(false);
+      });
     console.log("post", post);
-
-    // const { nftName, nftDescription, title, contents } = state;
-    // const post = await axios.post("http://localhost:4999/post/save", {
-    //   nftName,
-    //   nftDescription,
-    //   title,
-    //   contents,
-    //   data: [inputFields],
-    // });
-
-    // setState({
-    //   nftName: "",
-    //   nftDescription: "",
-    //   title: "",
-    //   contents: "",
-    // });
-
-    // setInputFields([inputFields]);
-    // console.log("post", post);
 
     history.push("/post");
     console.log(
@@ -192,6 +180,7 @@ const Write = () => {
           </dl>
         </div>
       </div>
+
       <div className="board__write--container">
         <div className="board__write">
           <div className="board__write--title">
@@ -210,7 +199,7 @@ const Write = () => {
             </dl>
           </div>
           <div className="board__write--info">
-            <div className="board__write--img">
+            <div className="board__write--type">
               {inputFields.map((inputField, index) => (
                 <div key={index}>
                   <dl>
@@ -218,6 +207,7 @@ const Write = () => {
                     <dd>
                       <input
                         ref={labelInput}
+                        className="board__label"
                         type="text"
                         placeholder="라벨 입력"
                         name="label"
@@ -265,13 +255,24 @@ const Write = () => {
           </div>
         </div>
         <div className="board__btn--container">
-          <button
-            type="submit"
-            onClick={handleSubmit}
-            className="board__btn--on"
-          >
-            등록
-          </button>
+          {!isLoading && (
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className="board__btn--on"
+            >
+              등록
+            </button>
+          )}
+          {isLoading && (
+            <button type="submit" disabled className="board__btn--on">
+              <i
+                className="fas fa-spinner fa-spin"
+                style={{ marginRight: "10px" }}
+              ></i>
+              등록 ....
+            </button>
+          )}
           <button
             className="board__btn--off"
             onClick={() => history.push("/post")}

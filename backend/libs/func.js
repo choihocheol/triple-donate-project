@@ -1,6 +1,10 @@
 const UserModel = require("../model/Users");
 const NftModel = require("../model/NFTs");
 const TDT = require("../blockchain/TDKIP7");
+const zipFolder = require('zip-a-folder');
+
+const fs = require('fs');
+const path = require("path");
 
 // TDT Update
 exports.updateTDT = async (userId, amount) => {
@@ -33,7 +37,28 @@ exports.fetchNftDataByNftId = async (nftList) => {
         data.push({nftId: nft.nftId, nftName: nft.nftName, nftDescription: nft.nftDescription, nftImageIpfsAddr: nft.nftImageIpfsAddr})
     }
     return data;
-}
+};
 
+exports.compressDataBySeq = async (seq) => {
+    const dirSeq = path.join(__dirname, `../data/${seq}`);
+    const savedDir = path.join(__dirname,  `../data/${seq}.zip`);
+    
+    // 파일 존재 => 삭제 => 압축
+    if(fs.existsSync(savedDir)){
+        fs.unlink(savedDir, (err) => {
+            if(!err){
+                console.log(err)
+                return false
+            }
+        });
+        await zipFolder.zip(dirSeq, savedDir)
+        console.log("delete and compress")
+        return savedDir
 
+    }else{  // 파일 X => 압축
+        await zipFolder.zip(dirSeq, savedDir)
+        console.log("Success") 
+        return savedDir
+    }
+};
 

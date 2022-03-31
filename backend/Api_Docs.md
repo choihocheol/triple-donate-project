@@ -162,6 +162,59 @@ Get post by seq
 }
 ```
 
+## /post/upload (POST)
+Donation data upload
+
+- **Request**
+
+```json
+file이름 = donationData
+{
+  "nftId": "NftId",
+}
+```
+
+- **Response**
+
+```json
+// 성공(200)
+{
+  "msg": "Success Upload"
+}
+// TDT 부족 (400)
+{
+  "msg": Err
+}
+// Err (400)
+{
+  "msg": Err
+}
+```
+
+
+## /post/download/{:seq} (GET)
+Download upload post data
+
+- **Response**
+
+```json
+// 성공(200)
+{
+  "data": Post
+}
+// Seq 오류 (400)
+{
+  "msg": "Seq is not valid"
+}
+// Err (400)
+{
+  "msg": Err
+}
+```
+
+
+
+
 
 
 

@@ -4,6 +4,7 @@ const NFTModel = require("../model/NFTs");
 const NFT = require("../blockchain/TDKIP37");
 const func = require("../libs/func");
 
+
 // fetch Post List
 exports.getPostList = async (req, res) => {
   try {
@@ -113,12 +114,19 @@ exports.upload = async (req,res) => {
 };
 
 exports.download = async (req, res) => {
+  const seq = req.params.seq;
+
   try{
-
-    // res.setHeader('Content=Disposition', `attachment; filename = ${파일명} `);
-    res.sendFile('파일경로');
-    res.download('path', 'filename');
+    const post = await PostModel.findOne({seq: seq});
+    if(post){
+      const compressedZipDir = await func.compressDataBySeq(seq);
+      if(compressedZipDir){
+        return res.status(200).download(compressedZipDir);
+      }
+    }else{
+      return res.stauts(400).json({msg: "Seq is not valid"})
+    }  
   }catch(err){
-
+    return res.status(400).json({msg: err});
   }
 }

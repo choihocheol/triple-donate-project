@@ -28,7 +28,7 @@
 
 <br>
 
-Triple Donate는 말 그대로 **decentralization, data, donate**
+Triple Donate는 말 그대로 **decentralization, data, donation**
 
 각각의 의미를 순서대로 가지는 **탈 중앙화 데이터 기부 플랫폼**입니다.
 

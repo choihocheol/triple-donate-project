@@ -50,7 +50,7 @@ export const BoldText = styled.span`
 `;
 const ProfileContainer = styled.div`
   display: flex;
-  background-image: url("https://avatars.githubusercontent.com/u/55051805?v=4");
+  background-image: url(${(props) => props.imgAddr});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -134,13 +134,11 @@ const IconContainer = styled.div`
   height: 60px;
 `;
 
-export const Us = ({ name, stack, role, blogAddr, githubAddr }) => {
+export const Us = ({ name, stack, role, imgAddr, blogAddr, githubAddr }) => {
   return (
     <UserContainer>
-      <ProfileContainer>
-        <Badge color="primary" badgeContent="팀장">
-          <Profile />
-        </Badge>
+      <ProfileContainer imgAddr={imgAddr}>
+        <Profile />
       </ProfileContainer>
       <InfoContainer>
         <UserNameFont>

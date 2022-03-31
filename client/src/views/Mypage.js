@@ -1,4 +1,4 @@
-import { Avatar, Backdrop, CircularProgress, Divider, List, Typography } from "@mui/material";
+import { Avatar, Backdrop, CircularProgress, Divider, List, Typography } from "@mui/material/";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Nft from "../components/Nft";

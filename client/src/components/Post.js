@@ -6,20 +6,26 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
-import { IconButton, Snackbar } from "@mui/material";
-// import Link from "@mui/material/Link";
+import { Button } from "@mui/material";
 import styled from "styled-components";
 import axios from "axios";
 import { Link } from "react-router-dom";
-export const BtnContainer = styled.div`
+export const PostContainer = styled.div`
+  width: 80%;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
+`;
+export const BtnContainer = styled.div`
+  width: 20%;
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: center;
 `;
 export const Container = styled.div`
   padding-bottom: 8px;
-  width: 100%;
-  height: 100%;
+  width: 60vh;
+  /* height: 100%; */
   display: flex;
   flex-direction: row;
   border-bottom: 0.1px solid rgba(0, 0, 0, 0.1);
@@ -44,28 +50,32 @@ export default function AlignItemsList({ title, desc, imgAddr, seq }) {
   };
   return (
     <Container>
-      <Link to={`/view/${seq}`}>
-        <ListItem sx={{ m: 1, width: "60vh" }} alignItems="flex-start">
-          {/* <ListItem alignItems="flex-start"> */}
-          <ListItemAvatar>
-            <Avatar sx={{ width: 48, height: 48 }} r alt="Post" src={imgAddr} />
-          </ListItemAvatar>
-          <ListItemText
-            primary={title}
-            secondary={
-              <React.Fragment>
-                <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary"></Typography>
-                {desc}
-              </React.Fragment>
-            }
-          />
-        </ListItem>
-      </Link>
+      <PostContainer>
+        <Link to={`/view/${seq}`}>
+          <ListItem sx={{ m: 1 }} alignItems="flex-start">
+            {/* <ListItem alignItems="flex-start"> */}
+            <ListItemAvatar>
+              <Avatar sx={{ width: 48, height: 48 }} r alt="Post" src={imgAddr} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={title}
+              secondary={
+                <React.Fragment>
+                  <Typography sx={{ display: "inline", width: "60%" }} component="span" variant="body2" color="text.primary"></Typography>
+                  {desc}
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        </Link>
+      </PostContainer>
+      {/* <Stack direction={{ xs: "column", sm: "row" }} spacing={1}> */}
       <BtnContainer>
-        <IconButton sx={{ alignSelf: "center" }} color="primary" aria-label="download" onClick={clickDownload}>
-          <ArrowCircleDownIcon />
-        </IconButton>
+        <Button size="small" onClick={clickDownload} variant="contained" endIcon={<ArrowCircleDownIcon />}>
+          다운로드
+        </Button>
       </BtnContainer>
+
       <Divider />
       {/* </ListItem> */}
     </Container>

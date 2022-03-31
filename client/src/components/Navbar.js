@@ -13,7 +13,7 @@ import { logoutUser } from "../reducers/loginReducer";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   const [removeCookie] = useCookies(["connect.sid"]);
 
   axios.defaults.withCredentials = true;
@@ -47,9 +47,14 @@ const Navbar = () => {
     <>
       <Nav>
         <NavIcon to="/">
-          <img src={require("../assets/logo_white.png")} alt="logo" height="120px" width="200px" />
+          <img
+            src={require("../assets/logo_white.png")}
+            alt="logo"
+            height="120px"
+            width="200px"
+          />
         </NavIcon>
-        <Bars />
+        <Bars onClick={toggle} />
         <NavMenu>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/swap">Swap</NavLink>
@@ -73,7 +78,9 @@ const Navbar = () => {
                 aria-expanded={open ? "true" : undefined}
               >
                 <Avatar sx={{ width: 32, height: 32, mr: 2 }} />
-                <Typography sx={{ fontWeight: 600 }}>{data.login.name}</Typography>
+                <Typography sx={{ fontWeight: 600 }}>
+                  {data.login.name}
+                </Typography>
                 <MoreVertIcon color="white" sx={{ ml: 1 }} />
               </Button>
             </>

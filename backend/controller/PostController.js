@@ -62,7 +62,8 @@ exports.savePost = async (req, res) => {
       await newNft.save();
 
       // update user nftlist
-      await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": nftId}});
+      await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": [nftId, 0]}});s
+
       return res.status(200).json({ msg: "Success Post save" });
     }
   } catch (err) {
@@ -90,6 +91,7 @@ exports.getPostFindBySeq = async (req, res) => {
 exports.upload = async (req,res) => {
   const {nftId} = req.body
   const userId = req.session.userId
+  
   try{
     const user = await UserModel.findOne({userId: req.session.userId});
 
@@ -97,7 +99,7 @@ exports.upload = async (req,res) => {
     await NFT.mintNFT(nftId, user.walletAddr)
 
     // update user nft list
-    await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": nftId}});
+    await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": [nftId,1]}});
 
     // mint TDT +2
     func.updateTDT(userId, 2)
@@ -107,5 +109,16 @@ exports.upload = async (req,res) => {
     console.log(err)
     return res.status(400).json({msg: err})
     
+  }
+};
+
+exports.download = async (req, res) => {
+  try{
+
+    // res.setHeader('Content=Disposition', `attachment; filename = ${파일명} `);
+    res.sendFile('파일경로');
+    res.download('path', 'filename');
+  }catch(err){
+
   }
 }

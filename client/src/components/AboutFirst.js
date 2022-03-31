@@ -16,7 +16,7 @@ export default function AboutFirst() {
         <br />
         <ContentContainer>
           <ContentText>
-            Triple Donate는 말 그대로 <BoldText>decentralization, data, donate </BoldText>각각의 의미를 순서대로 가지는 탈 중앙화 데이터 기부 플랫폼입니다.
+            Triple Donate는 말 그대로 <BoldText>Decentralization, Data, Donation </BoldText>각각의 의미를 순서대로 가지는 탈 중앙화 데이터 기부 플랫폼입니다.
             <br />
             <BoldText>데이터 기반의 연구</BoldText>를 하는 기관, 단체, 학생들은 triple donate를 통해 양질의 데이터를 얻고 데이터를 기부하는 유저는 triple donate를 통해 자신의 어떤
             개인 데이터가 어떤 곳에서 사용되는지 정확히 알 수 있습니다.

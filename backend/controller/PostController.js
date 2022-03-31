@@ -4,6 +4,7 @@ const NFTModel = require("../model/NFTs");
 const NFT = require("../blockchain/TDKIP37");
 const func = require("../libs/func");
 
+
 // fetch Post List
 exports.getPostList = async (req, res) => {
   try {
@@ -62,7 +63,8 @@ exports.savePost = async (req, res) => {
       await newNft.save();
 
       // update user nftlist
-      await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": nftId}});
+      await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": [nftId, 0]}});s
+
       return res.status(200).json({ msg: "Success Post save" });
     }
   } catch (err) {
@@ -90,6 +92,7 @@ exports.getPostFindBySeq = async (req, res) => {
 exports.upload = async (req,res) => {
   const {nftId} = req.body
   const userId = req.session.userId
+  
   try{
     const user = await UserModel.findOne({userId: req.session.userId});
 
@@ -97,7 +100,7 @@ exports.upload = async (req,res) => {
     await NFT.mintNFT(nftId, user.walletAddr)
 
     // update user nft list
-    await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": nftId}});
+    await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": [nftId,1]}});
 
     // mint TDT +2
     func.updateTDT(userId, 2)
@@ -107,5 +110,23 @@ exports.upload = async (req,res) => {
     console.log(err)
     return res.status(400).json({msg: err})
     
+  }
+};
+
+exports.download = async (req, res) => {
+  const seq = req.params.seq;
+
+  try{
+    const post = await PostModel.findOne({seq: seq});
+    if(post){
+      const compressedZipDir = await func.compressDataBySeq(seq);
+      if(compressedZipDir){
+        return res.status(200).download(compressedZipDir);
+      }
+    }else{
+      return res.stauts(400).json({msg: "Seq is not valid"})
+    }  
+  }catch(err){
+    return res.status(400).json({msg: err});
   }
 }

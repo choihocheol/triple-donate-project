@@ -1,13 +1,15 @@
-import { Avatar, Divider, Typography } from "@mui/material";
+import { Avatar, Backdrop, CircularProgress, Divider, List, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Nft from "../components/Nft";
+import Post from "../components/Post";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
   position: inherit;
   width: 100%;
+  min-height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,90 +150,101 @@ const DescFont = styled.div`
 
 export default function Mypage() {
   const [user, setUser] = useState({});
-  const userInfo = useSelector((state) => state);
-  console.log(user.userData.userName);
+  const [open, setOpen] = useState(true);
+  const [myProject, setMyProject] = useState([]);
+  const [contribute, setContribute] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:4999/user/mylist")
       .then((res) => {
-        // console.log(res.data.userData.balance);
+        setMyProject(res.data.userData.nftList.filter((e) => e[1] === 1));
+        setContribute(res.data.userData.nftList.filter((e) => e[1] === 0));
         setUser(res.data);
+        console.log(res.data);
+        setOpen(false);
       })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <Container>
-      <HeaderContainer>
-        <ContentFont>내 정보</ContentFont>
-        <Divider />
-        <TopContainer>
-          <UserContainer>
-            <UserInfo>
-              <ProfileContainer></ProfileContainer>
-
-              {/* <Divider /> */}
-              <InfoContainer>
-                <UserNameFont>{user.userData.userName}</UserNameFont>
-                <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
-                  <InfoContent>
-                    <TitleFont> 프로젝트</TitleFont>
-                    <DescFont>3</DescFont>
-                  </InfoContent>
-                  <InfoContent>
-                    <TitleFont>기여한 프로젝트</TitleFont>
-                    <DescFont>6</DescFont>
-                  </InfoContent>
-                </InfoContents>
-                <InfoContents>
-                  <InfoContent>
-                    <TitleFont>TDT</TitleFont>
-                    <DescFont>
-                      {user.userData.balance === 0 ? "0" : user.userData.balance}
-                      <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="share" src="http://temp20.zsol.co.kr/icon_img/share01.svg" />
-                    </DescFont>
-                  </InfoContent>
-                  <InfoContent>
-                    <TitleFont>NFT</TitleFont>
-                    <DescFont>
-                      5 <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="trophy" src="http://temp20.zsol.co.kr/icon_img/trophy.svg" />
-                    </DescFont>
-                  </InfoContent>
-                </InfoContents>
-              </InfoContainer>
-            </UserInfo>
-          </UserContainer>
-          <PostContainer>
-            <ContentFont>나의 프로젝트</ContentFont>
+      {open ? (
+        <Backdrop sx={{ color: "#fff", zIndex: 1 }} open={open}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      ) : (
+        <>
+          <HeaderContainer>
+            <ContentFont>내 정보</ContentFont>
             <Divider />
-            <MainContainer>
-              <div style={{ padding: "130px 0" }}>
-                <div style={{ fontSize: "22px", fontWeight: "500" }}>작성한 프로젝트가 없습니다</div>
-              </div>
-            </MainContainer>
-          </PostContainer>
-        </TopContainer>
-      </HeaderContainer>
-      <BottomContainer>
-        <ContentFont>나의 NFT</ContentFont>
+            <TopContainer>
+              <UserContainer>
+                <UserInfo>
+                  <ProfileContainer></ProfileContainer>
 
-        <NftContainer>
+                  <InfoContainer>
+                    <UserNameFont>{user.userData.userName}</UserNameFont>
+                    <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
+                      <InfoContent>
+                        <TitleFont>나의 프로젝트</TitleFont>
+                        <DescFont>{myProject.length} </DescFont>
+                      </InfoContent>
+                      <InfoContent>
+                        <TitleFont>기여한 프로젝트</TitleFont>
+                        <DescFont>{contribute.length}</DescFont>
+                      </InfoContent>
+                    </InfoContents>
+                    <InfoContents>
+                      <InfoContent>
+                        <TitleFont>TDT</TitleFont>
+                        <DescFont>
+                          {user.userData.balance === 0 ? "0" : user.userData.balance}
+                          <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="share" src="http://temp20.zsol.co.kr/icon_img/share01.svg" />
+                        </DescFont>
+                      </InfoContent>
+                      <InfoContent>
+                        <TitleFont>NFT</TitleFont>
+                        <DescFont>
+                          {user.nftData.length === 0 ? "0" : user.nftData.length}{" "}
+                          <Avatar sx={{ ml: 0.5, width: "17px", height: "17px" }} alt="trophy" src="http://temp20.zsol.co.kr/icon_img/trophy.svg" />
+                        </DescFont>
+                      </InfoContent>
+                    </InfoContents>
+                  </InfoContainer>
+                </UserInfo>
+              </UserContainer>
+              <PostContainer>
+                <ContentFont>나의 프로젝트</ContentFont>
+                <Divider />
+                <List sx={{ width: "100%", minWidth: 500, mt: 2 }}>
+                  {user.postData ? (
+                    user.postData.map((e) => {
+                      return <Post id={e.seq} seq={e.seq} title={e.title} desc={e.nftDescription} imgAddr={e.nftImageIpfsAddr} />;
+                    })
+                  ) : (
+                    <div style={{ padding: "130px 0" }}>
+                      <div style={{ fontSize: "22px", fontWeight: "500" }}>작성한 프로젝트가 없습니다</div>
+                    </div>
+                  )}
+                </List>
+              </PostContainer>
+            </TopContainer>
+          </HeaderContainer>
+          <BottomContainer>
+            <ContentFont>나의 NFT</ContentFont>
+
+            <NftContainer>
+              {user.nftData ? user.nftData.map((e) => <Nft title={e.nftName} desc={e.nftDescription} img={e.nftImageIpfsAddr} />) : <div>ddddd</div>}
+              {/* <Nft />
           <Nft />
           <Nft />
           <Nft />
-          <Nft />
-          <Nft />
-        </NftContainer>
-      </BottomContainer>
+          <Nft /> */}
+            </NftContainer>
+          </BottomContainer>{" "}
+        </>
+      )}
     </Container>
   );
 }
-
-/*
- <Stack direction="row" spacing={2}>
-                <StyledBadge overlap="circular" anchorOrigin={{ vertical: "bottom", horizontal: "right" }} variant="dot">
-                  <Avatar alt={data.login.name}>{data.login.name}</Avatar>
-                </StyledBadge>
-              </Stack>
-              <Button onClick={logoutHandler}>로그아웃 </Button>
-*/

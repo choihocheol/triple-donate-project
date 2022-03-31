@@ -18,7 +18,8 @@ export default function AboutSecond() {
             TDT Token이란 triple donate의 화폐라고 볼 수 있으며 주로 데이터를 받기 위한 프로젝트를 작성하는 용도로 사용됩니다.
             <br />
             <BoldText>데이터를 기부받기 위한 프로젝트의 남발을 우려</BoldText>해 TDT Token을 사용하도록 하였으며, 데이터를 기부받기 위해서는 다른 프로젝트에도 데이터를 기부하여
-            소속감을 느낄 수 있었으면 좋겠습니다
+            소속감을 느낄 수 있었으면
+            <br /> 좋겠습니다
           </ContentText>
         </ContentContainer>
         <SubContainer>

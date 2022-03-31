@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, Badge, IconButton } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -92,25 +93,24 @@ const InfoContent = styled.div`
   height: 60px;
 `;
 const UserNameFont = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   font-size: 22px;
   font-weight: 600;
 `;
 const TitleFont = styled.div`
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.5);
+  margin: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
 `;
 const DescFont = styled.div`
-  margin-bottom: 5px;
-  font-size: 18px;
-  font-weight: 500;
+  margin-bottom: 1px;
+  font-size: 14px;
+  font-weight: 600;
   color: #2c2c2c;
 `;
 
 const UserContainer = styled.div`
-  font-family: "Lato", Arial, sans-serif;
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -134,19 +134,31 @@ const IconContainer = styled.div`
   height: 60px;
 `;
 
-export const Us = ({ name, toDo, role, blogAddr, githubAddr }) => {
+export const Us = ({ name, stack, role, blogAddr, githubAddr }) => {
   return (
     <UserContainer>
       <ProfileContainer>
-        <Profile />
+        <Badge color="primary" badgeContent="팀장">
+          <Profile />
+        </Badge>
       </ProfileContainer>
       <InfoContainer>
-        <UserNameFont>{name}</UserNameFont>
-        <DescFont>{role}</DescFont>
+        <UserNameFont>
+          {name === "최호철" ? (
+            <Badge color="primary" badgeContent="팀장" variant="standard">
+              {"   " + name + "   "}
+            </Badge>
+          ) : (
+            name
+          )}
+        </UserNameFont>
+        <TitleFont>{role}</TitleFont>
         <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
           <InfoContent>
-            <TitleFont>역할</TitleFont>
-            <DescFont>{toDo}</DescFont>
+            <TitleFont>사용 스택</TitleFont>
+            {stack.map((e) => (
+              <DescFont>{e}</DescFont>
+            ))}
           </InfoContent>
         </InfoContents>
         <InfoContents>

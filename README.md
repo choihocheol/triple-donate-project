@@ -21,7 +21,7 @@
 <img src="https://user-images.githubusercontent.com/60258527/157661452-39133fd7-7a88-4705-83b6-e3a33521b5d5.png" alt="logo" width="500">
 <h3>Triple Donate</h3>
 <br>
-<p>Triple Donate는 말 그대로 <b>decentralization, data, donate</b></p>
+<p>Triple Donate는 말 그대로 <b>decentralization, data, dontation</b></p>
 <p>각각의 의미를 순서대로 가지는 <b>탈 중앙화 데이터 기부 플랫폼</b>입니다.</p>
 
 [프로젝트의 기획 동기와 더 자세한 설명](./introduction_detail.md)

@@ -7,16 +7,23 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
 import { IconButton, Snackbar } from "@mui/material";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import styled from "styled-components";
 import axios from "axios";
+import { Link } from "react-router-dom";
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+`;
 export const Container = styled.div`
-  margin-left: 30px;
+  padding-bottom: 8px;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.1);
+  /* justify-content: space-between; */
 `;
 
 export default function AlignItemsList({ title, desc, imgAddr, seq }) {
@@ -37,8 +44,8 @@ export default function AlignItemsList({ title, desc, imgAddr, seq }) {
   };
   return (
     <Container>
-      <Link underline="none" sx={{ display: "felx", color: "black", flexDirection: "column", alignItems: "space-around" }} href={`/view/${seq}`}>
-        <ListItem sx={{ m: 1, width: "10vh" }} alignItems="flex-start">
+      <Link to={`/view/${seq}`}>
+        <ListItem sx={{ m: 1, width: "60vh" }} alignItems="flex-start">
           {/* <ListItem alignItems="flex-start"> */}
           <ListItemAvatar>
             <Avatar sx={{ width: 48, height: 48 }} r alt="Post" src={imgAddr} />
@@ -54,11 +61,13 @@ export default function AlignItemsList({ title, desc, imgAddr, seq }) {
           />
         </ListItem>
       </Link>
-      <IconButton sx={{ alignSelf: "center" }} color="primary" aria-label="download" onClick={clickDownload}>
-        <ArrowCircleDownIcon />
-      </IconButton>{" "}
-      {/* </ListItem> */}
+      <BtnContainer>
+        <IconButton sx={{ alignSelf: "center" }} color="primary" aria-label="download" onClick={clickDownload}>
+          <ArrowCircleDownIcon />
+        </IconButton>
+      </BtnContainer>
       <Divider />
+      {/* </ListItem> */}
     </Container>
   );
 }

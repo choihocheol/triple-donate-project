@@ -29,7 +29,7 @@ exports.isTDT = async (userId, amount) => {
 exports.fetchNftDataByNftId = async (nftList) => {
     const data = []
     for(let el of nftList){
-        let nft = await NftModel.findOne({nftId: el})
+        let nft = await NftModel.findOne({nftId: el[0]})
         data.push({nftId: nft.nftId, nftName: nft.nftName, nftDescription: nft.nftDescription, nftImageIpfsAddr: nft.nftImageIpfsAddr})
     }
     return data;

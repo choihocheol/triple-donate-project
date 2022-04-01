@@ -3,14 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import { Divider, Avatar } from "@mui/material";
 
-const MainContainer = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(auto-fill, minmax(1fr, auto));
-  margin-bottom: 50px;
-`;
-
 const TokenContainer = styled.div`
   width: 20rem;
   height: 31rem;
@@ -37,7 +29,6 @@ const Desc = styled.div`
 const User = styled.div`
   display: flex;
   align-items: center;
-  /* margin-left: 20px; */
 `;
 
 const UserText = styled.div`

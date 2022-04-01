@@ -1,122 +1,44 @@
 import React from "react";
-import styled from "styled-components";
-import LogoSrc from "../assets/logo_black.png";
 import { Divider } from "@mui/material";
-import { ContentContainer, ContentText, SubContainer, SubText, TitleContainer, TitleText, Us } from "./AboutElements";
-const MainContainer = styled.div`
-  width: 90%;
-  height: 100%
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-`;
+import { Container, ContentContainer, ContentText, MainContainer, SubContainer, SubText, TitleContainer, TitleText } from "./AboutElements";
 
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-const UsContainer = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-`;
-const ListFont = styled.div`
-  margin-bottom: 5px;
-  font-size: 22px;
-  font-weight: 600;
-`;
-const DescFont = styled.div`
-  margin: 15px 25px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #2c2c2c;
-`;
-
-export default function AboutFourth() {
+export default function AboutThird() {
   return (
     <Container>
       <MainContainer>
         <TitleContainer>
-          <TitleText>About Us</TitleText>
+          <TitleText>NFT</TitleText>
         </TitleContainer>
         <Divider />
         <SubContainer>
-          <SubText>Blockchain</SubText>
+          <SubText>・ NFT</SubText>
         </SubContainer>
+        <ContentContainer>
+          <ContentText>triple donate에서 데이터를 기부했을 때 프로젝트에서 배포하는 NFT를 받을 수 있습니다</ContentText>
+        </ContentContainer>
         <SubContainer>
-          <UsContainer>
-            <Us
-              name="최호철"
-              role="Blockchain"
-              imgAddr={"https://avatars.githubusercontent.com/u/60258527?v=4"}
-              blogAddr="https://velog.io/@choihocheol"
-              stack={["Solidity", "Caver.js"]}
-              githubAddr="https://github.com/choihocheol"
-            />{" "}
-            <ContentContainer>
-              <ListFont>구현 항목</ListFont>
-              <DescFont>aaaa</DescFont>
-            </ContentContainer>
-          </UsContainer>
+          <SubText>・ 프로젝트를 생성하는 사람</SubText>
         </SubContainer>
+        <ContentContainer>
+          <ContentText>
+            TDT Token을 이용해 프로젝트를 생성하고, 다른 사람들에게 데이터를 기여 받을 수 있습니다
+            <br />
+            프로젝트를 생성할 때 대표 이미지를 받아 NFT가 생성되며
+            <br /> 프로젝트에 데이터를 기부받은 사람에게 작은 답례를 위해 triple donate에서 준비하겠습니다.
+          </ContentText>
+        </ContentContainer>
         <SubContainer>
-          <SubText>Front-End</SubText>
+          <SubText>・ 데이터를 기부하는 사람</SubText>
         </SubContainer>
-        <SubContainer>
-          <UsContainer>
-            <Us
-              name="이민기"
-              role="Frontend"
-              imgAddr={"https://media.vlpt.us/images/moment_log/profile/83a77fd2-8e45-4f9b-a149-4ebbcde279bf/IMG_4131.PNG?w=240"}
-              blogAddr="https://velog.io/@moment_log"
-              stack={["JavaScript", "React", "MUI", "StyledComponent"]}
-              githubAddr="https://github.com/mingi3442"
-            />
-            <ContentContainer>
-              <ListFont>구현 항목</ListFont>
-              <DescFont>aaaa</DescFont>
-            </ContentContainer>
-          </UsContainer>
-        </SubContainer>
-        <SubContainer>
-          <UsContainer>
-            <Us
-              name="신동주"
-              role="Frontend"
-              imgAddr={"https://avatars.githubusercontent.com/u/93483541?v=4"}
-              blogAddr="https://velog.io/@tls980824"
-              stack={["JavaScript", "React", "MUI", "StyledComponent"]}
-              githubAddr="https://github.com/djshinnn"
-            />{" "}
-            <ContentContainer>
-              <ListFont>구현 항목</ListFont>
-              <DescFont>aaaa</DescFont>
-            </ContentContainer>
-          </UsContainer>
-        </SubContainer>
-
-        <SubContainer>
-          <SubText>Back-End</SubText>
-        </SubContainer>
-        <SubContainer>
-          <UsContainer>
-            <Us
-              name="김신학"
-              role="Backend"
-              imgAddr={"https://avatars.githubusercontent.com/u/37060250?v=4"}
-              blogAddr="https://github.com/Colvet"
-              stack={["Express", "MongoDB"]}
-              githubAddr="https://github.com/Colvet"
-            />{" "}
-            <ContentContainer>
-              <ListFont>구현 항목</ListFont>
-              <DescFont>aaaa</DescFont>
-            </ContentContainer>
-          </UsContainer>
-        </SubContainer>
+        <ContentContainer>
+          <ContentText>
+            데이터를 기부하는 사람은 프로젝트에서 발급한 NFT를 받을 수 있습니다.
+            <br />
+            자신이 기부한 데이터를 이용하는 프로젝트의 NFT는
+            <br /> 더 나은 사회를 위한 프로젝트에 기여하였다는 작은 증명서로써 참여자들의 데이터에 대한
+            <br /> 작은 보상으로 지급됩니다.
+          </ContentText>
+        </ContentContainer>
       </MainContainer>
     </Container>
   );

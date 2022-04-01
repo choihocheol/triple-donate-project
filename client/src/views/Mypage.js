@@ -1,10 +1,9 @@
-import { Avatar, Backdrop, CircularProgress, Divider, List, Typography } from "@mui/material/";
+import { Avatar, Backdrop, CircularProgress, Divider, List } from "@mui/material/";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Nft from "../components/Nft";
 import Post from "../components/Post";
 import axios from "axios";
-import { useSelector } from "react-redux";
 
 const Container = styled.div`
   position: inherit;
@@ -49,14 +48,7 @@ const PostContainer = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-const MainContainer = styled.div`
-  height: 100%;
-  margin: 30px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-`;
+
 const BottomContainer = styled.div`
   padding: 20px 20px;
   border-top: 0.5px solid #a9a9a9;
@@ -66,8 +58,6 @@ const BottomContainer = styled.div`
   flex-direction: column;
 `;
 const UserInfo = styled.div`
-  /* background-color: #a9a9a9; */
-
   height: 450px;
   width: 330px;
   margin: 10vh auto;
@@ -95,12 +85,7 @@ const ProfileContainer = styled.div`
   border-radius: 50%;
   box-shadow: 1.2px 1.2px 1.2px 1px #919191;
 `;
-const Profile = styled.img`
-  display: inline;
-  height: 230px;
-  width: auto;
-  margin-left: -34px;
-`;
+
 const InfoContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -108,7 +93,6 @@ const InfoContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 230px;
-  /* background-color: #2c2c2c; */
 `;
 const InfoContents = styled.div`
   display: flex;
@@ -117,7 +101,6 @@ const InfoContents = styled.div`
   flex-direction: row;
   width: 90%;
   height: 90px;
-  /* background-color: white; */
 `;
 const InfoContent = styled.div`
   display: flex;
@@ -126,7 +109,6 @@ const InfoContent = styled.div`
   align-items: center;
   width: 40%;
   height: 60px;
-  /* background-color: #2c2c2c; */
 `;
 const UserNameFont = styled.div`
   margin-bottom: 30px;
@@ -161,7 +143,7 @@ export default function Mypage() {
         setMyProject(res.data.userData.nftList.filter((e) => e[1] === 1));
         setContribute(res.data.userData.nftList.filter((e) => e[1] === 0));
         setUser(res.data);
-        console.log(res.data);
+
         setOpen(false);
       })
       .catch((err) => console.log(err));
@@ -235,12 +217,7 @@ export default function Mypage() {
             <ContentFont>나의 NFT</ContentFont>
 
             <NftContainer>
-              {user.nftData ? user.nftData.map((e) => <Nft title={e.nftName} desc={e.nftDescription} img={e.nftImageIpfsAddr} />) : <div>ddddd</div>}
-              {/* <Nft />
-          <Nft />
-          <Nft />
-          <Nft />
-          <Nft /> */}
+              {user.nftData ? user.nftData.map((e) => <Nft title={e.nftName} desc={e.nftDescription} img={e.nftImageIpfsAddr} />) : <div>보유하신 NFT가 없습니다.</div>}
             </NftContainer>
           </BottomContainer>{" "}
         </>

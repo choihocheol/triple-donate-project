@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Divider, Avatar } from "@mui/material";
 
 const TokenContainer = styled.div`
-  width: 20rem;
+  width: 35vh;
   height: 31rem;
   background: #fff;
   border-radius: 15px;

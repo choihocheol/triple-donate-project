@@ -63,7 +63,7 @@ exports.savePost = async (req, res) => {
       await newNft.save();
 
       // update user nftlist
-      await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": [nftId, 0]}});s
+      await UserModel.updateMany({userId: userId}, {$addToSet: {"nftList": [nftId, 0]}});
 
       return res.status(200).json({ msg: "Success Post save" });
     }

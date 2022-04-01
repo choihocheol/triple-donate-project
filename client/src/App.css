@@ -157,7 +157,7 @@ a {
 
 .board__title p {
   margin-top: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .board__btn--container {
@@ -517,6 +517,7 @@ a {
   border: 1px solid white;
   border-radius: 8px;
   font-size: 1rem;
+  font-weight: 600;
   width: 100px;
   height: 100px;
   word-break: keep-all;

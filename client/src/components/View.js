@@ -168,7 +168,7 @@ const View = () => {
             </Grid>
           </div>
           <div className="board__donate--info">
-            <h3 className="board__donate--title">Data donate from here!</h3>
+            <h3 className="board__donate--title">Donate your data here!!</h3>
             <h6 style={{ color: "#f7786b", marginBottom: "20px" }}>
               * 타입에 맞는 파일을 선택 해주세요! *
             </h6>
@@ -201,10 +201,10 @@ const View = () => {
           </div>
           <div>
             <div className="board__donate--comments-info">
-              <h6 style={{ marginLeft: "5px" }}>댓글 쓰기</h6>
+              <h6 style={{ marginLeft: "5px", fontWeight: 600 }}>댓글 쓰기</h6>
               <textarea
                 className="board__donate--comments"
-                placeholder="댓글 입력"
+                placeholder="댓글 입력 (댓글 기능은 준비 중입니다.)"
               ></textarea>
               <button className="board__btn--donate" onClick={handleSubmit}>
                 데이터 기부하기

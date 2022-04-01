@@ -11,10 +11,9 @@ import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import axios from "axios";
 import { logoutUser } from "../reducers/loginReducer";
 import { useHistory } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
-const Navbar = ({ toggle }) => {
-  const [removeCookie] = useCookies(["connect.sid"]);
+
+const Navbar = () => {
 
   axios.defaults.withCredentials = true;
   const history = useHistory();
@@ -73,7 +72,6 @@ const Navbar = ({ toggle }) => {
                   color: "#e2e2e2",
                   textTransform: "none",
                 }}
-                // aria-controls={open ? "account-menu" : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
               >
@@ -124,7 +122,6 @@ const Navbar = ({ toggle }) => {
                 </ListItemIcon>{" "}
                 마이페이지
               </MenuItem>
-              {/* <Divider /> */}
               <MenuItem onClick={logoutHandler}>
                 <ListItemIcon>
                   <Logout fontSize="small" />

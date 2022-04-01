@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Avatar, Badge, IconButton } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -50,21 +49,21 @@ export const BoldText = styled.span`
 `;
 const ProfileContainer = styled.div`
   display: flex;
-  background-image: url("https://avatars.githubusercontent.com/u/55051805?v=4");
+  background-image: url(${(props) => props.imgAddr});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   width: 75px;
   height: 75px;
   margin: 40px auto;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   overflow: hidden;
   border-radius: 50%;
   box-shadow: 1.2px 1.2px 1.2px 1px #919191;
 `;
 const Profile = styled.div`
   display: inline;
-  height: 230px;
+  height: 200px;
   width: auto;
   margin-left: -34px;
 `;
@@ -90,7 +89,7 @@ const InfoContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 40%;
-  height: 60px;
+  height: 45px;
 `;
 const UserNameFont = styled.div`
   margin-bottom: 5px;
@@ -98,13 +97,13 @@ const UserNameFont = styled.div`
   font-weight: 600;
 `;
 const TitleFont = styled.div`
-  margin: 6px;
+  margin: 5px;
   font-size: 14px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
 `;
 const DescFont = styled.div`
-  margin-bottom: 1px;
+  margin-bottom: 0.5px;
   font-size: 14px;
   font-weight: 600;
   color: #2c2c2c;
@@ -118,6 +117,7 @@ const UserContainer = styled.div`
   min-width: 250px;
   max-width: 310px;
   width: 100%;
+  height: 400px;
   background-color: #ffffff;
   color: #2b2b2b;
   text-align: center;
@@ -131,16 +131,14 @@ const IconContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 40%;
-  height: 60px;
+  height: 50px;
 `;
 
-export const Us = ({ name, stack, role, blogAddr, githubAddr }) => {
+export const Us = ({ name, stack, role, imgAddr, blogAddr, githubAddr }) => {
   return (
     <UserContainer>
-      <ProfileContainer>
-        <Badge color="primary" badgeContent="팀장">
-          <Profile />
-        </Badge>
+      <ProfileContainer imgAddr={imgAddr}>
+        <Profile />
       </ProfileContainer>
       <InfoContainer>
         <UserNameFont>
@@ -153,7 +151,7 @@ export const Us = ({ name, stack, role, blogAddr, githubAddr }) => {
           )}
         </UserNameFont>
         <TitleFont>{role}</TitleFont>
-        <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)" }}>
+        <InfoContents style={{ borderTop: "1px solid rgba(0,0,0,0.3)", marginTop: "10px" }}>
           <InfoContent>
             <TitleFont>사용 스택</TitleFont>
             {stack.map((e) => (

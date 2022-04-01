@@ -2,41 +2,41 @@ import React from "react";
 import { Divider } from "@mui/material";
 import { BoldText, Container, ContentContainer, ContentText, MainContainer, SubContainer, SubText, TitleContainer, TitleText } from "./AboutElements";
 
-export default function AboutThird() {
+export default function AboutSecond() {
   return (
     <Container>
       <MainContainer>
         <TitleContainer>
-          <TitleText>NFT</TitleText>
+          <TitleText>TDT Token</TitleText>
         </TitleContainer>
         <Divider />
         <SubContainer>
-          <SubText>・ NFT</SubText>
-        </SubContainer>
-        <ContentContainer>
-          <ContentText>triple donate에서 데이터를 기부했을 때 프로젝트에서 배포하는 NFT를 받을 수 있습니다</ContentText>
-        </ContentContainer>
-        <SubContainer>
-          <SubText>・ 프로젝트를 생성하는 사람</SubText>
+          <SubText>・ TDT Token</SubText>
         </SubContainer>
         <ContentContainer>
           <ContentText>
-            TDT Token을 이용해 프로젝트를 생성하고, 다른 사람들에게 데이터를 가여 받을 수 있습니다
+            TDT Token이란 triple donate의 화폐라고 볼 수 있으며 주로 데이터를 받기 위한 프로젝트를 작성하는 용도로 사용됩니다.
             <br />
-            프로젝트를 생성할 때 대표 이미지를 받아 NFT가 생성되며
-            <br /> 프로젝트에 데이터를 기부받은 사람에게 작은 답례를 위해 triple donate에서 준비하겠습니다.
+            <BoldText>데이터를 기부받기 위한 프로젝트의 남발을 우려</BoldText>해 TDT Token을 사용하도록 하였으며, 데이터를 기부받기 위해서는 다른 프로젝트에도 데이터를 기부하여
+            소속감을 느낄 수 있었으면 좋겠습니다
           </ContentText>
         </ContentContainer>
         <SubContainer>
-          <SubText>・ 데이터를 기부하는 사람</SubText>
+          <SubText>・ TDT Token을 얻는 방법</SubText>
         </SubContainer>
         <ContentContainer>
           <ContentText>
-            데이터를 기부하는 사람은 프로젝트에서 발급한 NFT를 받을 수 있습니다.
+            <BoldText>✓ 최초의 회원가입</BoldText>
             <br />
-            자신이 기부한 데이터를 이용하는 프로젝트의 NFT는
-            <br /> 더 나은 사회를 위한 프로젝트에 기여하였다는 작은 증명서로써 참여자들의 데이터에 대한
-            <br /> 작은 보상으로 지급됩니다.
+            <BoldText>✓ 다른 사람의 게시글에 데이터를 기여했을 때</BoldText>
+          </ContentText>
+        </ContentContainer>
+        <SubContainer>
+          <SubText>・ TDT Token의 사용</SubText>
+        </SubContainer>
+        <ContentContainer>
+          <ContentText>
+            <BoldText>✓ 다른 사람들의 데이터를 기부받기 위한 프로젝트 작성</BoldText>
           </ContentText>
         </ContentContainer>
       </MainContainer>

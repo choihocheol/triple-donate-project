@@ -19,7 +19,6 @@ export default function Home() {
         console.log(res);
         dispatch(setUser(res.data.userData.userName, true));
       })
-
       .catch((resposne) => console.log(resposne));
   }, []);
 

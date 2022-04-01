@@ -29,7 +29,6 @@ export default function Login() {
         password: userPw,
       })
       .then((res) => {
-        console.log(res);
         dispatch(setUser(res.data));
         setUserId("");
         setUserPw("");

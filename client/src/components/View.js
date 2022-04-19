@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "../App.css";
-import Grid from "@mui/material/Grid";
-import { FaList } from "react-icons/fa";
-import { FaRegListAlt } from "react-icons/fa";
-import Dataheader from "./Dataheader";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import '../App.css';
+import Grid from '@mui/material/Grid';
+import { FaList } from 'react-icons/fa';
+import { FaRegListAlt } from 'react-icons/fa';
+import Dataheader from './Dataheader';
+import axios from 'axios';
 
 const View = () => {
   const [data, setData] = useState();
@@ -22,7 +22,7 @@ const View = () => {
         .then((res) => {
           console.log(res);
           setData(res.data.data);
-          console.log("res.data.data", res.data.data);
+          console.log('res.data.data', res.data.data);
         })
         .catch((err) => {
           console.log(err);
@@ -41,23 +41,23 @@ const View = () => {
 
   const handleSubmit = async (e) => {
     const formData = new FormData();
-    formData.append("seq", data.seq);
-    formData.append("nftId", data.nftId);
-    formData.append("label", file.label);
-    formData.append("donationData", file.data);
+    formData.append('seq', data.seq);
+    formData.append('nftId', data.nftId);
+    formData.append('label', file.label);
+    formData.append('donationData', file.data);
 
     const upload = await axios.post(
-      "http://localhost:4999/post/upload",
-      formData
+      'http://localhost:4999/post/upload',
+      formData,
     );
-    console.log("uploadData", upload);
-    alert("데이터가 기부되었습니다!");
+    console.log('uploadData', upload);
+    alert('데이터가 기부되었습니다!');
   };
 
   if (!data) {
     return <div>로딩중입니다...</div>;
   } else {
-    console.log("img", data.nftImageIpfsAddr);
+    console.log('img', data.nftImageIpfsAddr);
     return (
       <div className="board__container">
         <Dataheader />
@@ -71,6 +71,7 @@ const View = () => {
                   alt=""
                   width="280px"
                   height="340px"
+                  style={{ objectFit: 'contain' }}
                 />
                 <div className="board__description--container">
                   <div className="board__description">
@@ -100,11 +101,11 @@ const View = () => {
                         Contract Address
                       </span>
                       <Link
-                        style={{ color: "#2081E2" }}
+                        style={{ color: '#2081E2' }}
                         className="board__details--right"
                         onClick={() =>
                           window.open(
-                            "https://baobab.scope.klaytn.com/account/0x584f441d7145CceE73cD6c27C6AF771594792E11?tabId=txList"
+                            'https://baobab.scope.klaytn.com/account/0x584f441d7145CceE73cD6c27C6AF771594792E11?tabId=txList',
                           )
                         }
                       >
@@ -169,7 +170,7 @@ const View = () => {
           </div>
           <div className="board__donate--info">
             <h3 className="board__donate--title">Donate your data here!!</h3>
-            <h6 style={{ color: "#f7786b", marginBottom: "20px" }}>
+            <h6 style={{ color: '#f7786b', marginBottom: '20px' }}>
               * 타입에 맞는 파일을 선택 해주세요! *
             </h6>
             {JSON.parse(data.data[0]).map((e, idx) => {
@@ -201,7 +202,7 @@ const View = () => {
           </div>
           <div>
             <div className="board__donate--comments-info">
-              <h6 style={{ marginLeft: "5px", fontWeight: 600 }}>댓글 쓰기</h6>
+              <h6 style={{ marginLeft: '5px', fontWeight: 600 }}>댓글 쓰기</h6>
               <textarea
                 className="board__donate--comments"
                 placeholder="댓글 입력 (댓글 기능은 준비 중입니다.)"
@@ -218,7 +219,7 @@ const View = () => {
             <Link
               className="board__btn--off"
               onClick={() => {
-                alert("준비중입니다!");
+                alert('준비중입니다!');
               }}
             >
               수정

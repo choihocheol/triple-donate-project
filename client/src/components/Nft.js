@@ -1,7 +1,7 @@
 // import { Divider } from "@mui/material";
-import React from "react";
-import styled from "styled-components";
-import { Divider, Avatar } from "@mui/material";
+import React from 'react';
+import styled from 'styled-components';
+import { Divider, Avatar } from '@mui/material';
 
 const TokenContainer = styled.div`
   width: 35vh;
@@ -38,7 +38,7 @@ const UserText = styled.div`
 const Image = styled.img`
   width: 100%;
   height: 80%;
-  object-fit: cover;
+  object-fit: contain;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   margin: 0.1px;
@@ -76,7 +76,11 @@ export default function Nft({ title, desc, img }) {
               </UserText>
             </User>
           </Desc>
-          <Avatar sx={{ width: "30px", height: "30px" }} alt="trophy" src="http://temp20.zsol.co.kr/icon_img/trophy.svg" />
+          <Avatar
+            sx={{ width: '30px', height: '30px' }}
+            alt="trophy"
+            src="http://temp20.zsol.co.kr/icon_img/trophy.svg"
+          />
         </BottonContainer>
       </TokenContainer>
     </div>

@@ -22,9 +22,12 @@
 <h3>Triple Donate</h3>
 <br>
 <p>Triple Donate는 말 그대로 <b>decentralization, data, dontation</b></p>
-<p>각각의 의미를 순서대로 가지는 <b>탈 중앙화 데이터 기부 플랫폼</b>입니다.</p>
+<p>
+	각각의 의미를 순서대로 가지는 <b>탈 중앙화 데이터 기부 플랫폼</b>입니다.
+	<a href="./introduction_detail.md">더보기</a>
+</p>
 
-[프로젝트의 기획 동기와 더 자세한 설명](./introduction_detail.md)
+[프로젝트에 대한 더 자세한 설명 및 동작 영상](https://codestates.notion.site/5-3Donate-8b5d560b8ed240648ef46a6d9f361405)
 
 </div>
 
